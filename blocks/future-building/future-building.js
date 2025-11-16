@@ -1,5 +1,11 @@
 import Swiper from '../swiper/swiper-bundle.min.js';
 import dataMapMoObj from '../../scripts/constant.js';
+import {
+  div,
+  label,
+  input,
+  img,
+} from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
   if (window.location.href.includes('author')) {
@@ -170,6 +176,18 @@ export default function decorate(block) {
       //   },
       // },
     };
+
+    // creating Sear Box for Key Investing
+    const keyInvestSection = block.closest('.section');
+    const keyInvestSearchWrap = keyInvestSection.querySelector('.default-content-wrapper');
+    if (keyInvestSection.classList.contains('key-investing')) {
+      const keyInvestSearch = div(
+        { class: 'keyinvest-search' },
+        input({ class: 'keyinvest-inp', id: 'keyinvest' }),
+        label({ class: 'keyinvest-label', for: 'keyinvest' }, 'Search here'),
+      );
+      keyInvestSearchWrap.append(keyInvestSearch);
+    }
   }
   Swiper(block, config);
 
