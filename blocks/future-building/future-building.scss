@@ -673,6 +673,10 @@
                     flex-wrap: wrap;
                     gap: 16px;
 
+                    @include media(mobile){
+                        gap: 0;
+                    }
+
                     .swiper-slide {
                         @include media(mobile) {
                             width: 100% !important;
