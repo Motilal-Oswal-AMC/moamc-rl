@@ -936,7 +936,7 @@ export default async function decorate(block) {
           return false;
         }
         if (dspblk.style.display === 'none') {
-          dspblk.style.display = 'block'
+          dspblk.style.display = 'block';
         } else {
           dspblk.style.display = 'none';
         }
@@ -954,6 +954,9 @@ export default async function decorate(block) {
 
       // If clicked inside share popup or on the icon → do nothing
       if (clickedShareIcon || clickedSharePopup) return;
+      // if (event.target.querySelector(".icon-share")) {
+        // return false;
+      // }
 
       // Otherwise close all share popups
       prevpage.querySelectorAll(".prev-studies-wrapper .icon-share").forEach((icon) => {

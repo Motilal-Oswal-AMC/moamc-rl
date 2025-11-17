@@ -53,6 +53,7 @@
                 margin: 0;
                 display: flex;
                 flex-direction: column;
+                padding-bottom: 24px;
 
                 // flex-grow: 1;
                 // padding-bottom: 24px;
@@ -714,7 +715,9 @@
 // MO Edge Listing css start end
 
 /* --- Pagination Logic --- */
-.pr-news-list.moedge-building-container, .moedge-list.moedge-building-container, .our-author-detail.moedge-building-container {
+.pr-news-list.moedge-building-container,
+.moedge-list.moedge-building-container,
+.our-author-detail.moedge-building-container {
     .moedge-building {
         .hidden-item {
             display: none !important;
@@ -806,5 +809,13 @@
         font-style: normal;
         font-weight: 500;
         line-height: 18px;
+    }
+}
+
+.our-author-detail.moedge-building-container {
+    .pagination-wrapper {
+        @include media(mobile) {
+            margin-top: 16px;
+        }
     }
 }
