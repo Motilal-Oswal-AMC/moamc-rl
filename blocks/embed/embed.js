@@ -31,14 +31,14 @@ const getDefaultEmbed = (url) => `<div style="left: 0; width: 100%; height: 0; p
 const embedYoutube = (url, autoplay) => {
   const usp = new URLSearchParams(url.search);
   // const suffix = autoplay ? '&muted=1&autoplay=1' : '';
-  const suffix = autoplay ? '&autoplay=1&unmute=1' : '&autoplay=1&unmute=1';
+  const suffix = autoplay ? '&autoplay=1&unmute=1' : '&autoplay=0&unmute=1';
   let vid = usp.get('v') ? encodeURIComponent(usp.get('v')) : '';
   const embed = url.pathname;
   if (url.origin.includes('youtu.be')) {
     [, vid] = url.pathname.split('/');
   }
   const embedHTML = `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
-        <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : `${embed}?autoplay=1&unmute=1`}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
+        <iframe src="https://www.youtube.com${vid ? `/embed/${vid}?rel=0&v=${vid}${suffix}` : `${embed}?${autoplay}`}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" 
         allow="autoplay; fullscreen; picture-in-picture; encrypted-media; accelerometer; gyroscope; picture-in-picture" allowfullscreen="" scrolling="no" title="Content from Youtube" loading="lazy"></iframe>
       </div>`;
   return embedHTML;
@@ -119,29 +119,32 @@ export default function decorate(block) {
       dataMapMoObj.CLASS_PREFIXES = ['annual-wealth-wrap', 'aw-ctn', 'aw-subctn', 'aw-subctnIn'];
       dataMapMoObj.addIndexed(el);
     });
-    
   }
 
   if (!block.closest('.prev-studies-wrapper')) {
-  if (placeholder && !block.closest('.media-coverage') && !block.closest('.prev-studies-wrapper')) {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'embed-placeholder';
-    wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
-    wrapper.prepend(placeholder);
-    wrapper.addEventListener('click', () => {
-      loadEmbed(block, link, true);
-    });
-    block.append(wrapper);
-  } else {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting)) {
-        observer.disconnect();
-        loadEmbed(block, link);
-      }
-    });
-    observer.observe(block);
+    if (placeholder && !block.closest('.media-coverage') && !block.closest('.prev-studies-wrapper')) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'embed-placeholder';
+      wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
+      wrapper.prepend(placeholder);
+      wrapper.addEventListener('click', () => {
+        loadEmbed(block, link, true);
+      });
+      block.append(wrapper);
+    } else {
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          observer.disconnect();
+          if (block.closest('.wcs-landing')) {
+            loadEmbed(block, link, false);
+          } else {
+            loadEmbed(block, link);
+          }
+        }
+      });
+      observer.observe(block);
+    }
   }
-}
   const data = block.closest('main');
   if (data !== null && window.location.href.includes('/wcs/in/en/coverage')) {
     if (!data.querySelector('.maintab')) {
