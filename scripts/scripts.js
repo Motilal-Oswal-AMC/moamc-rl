@@ -292,13 +292,41 @@ export function wishlist() {
 
 /* ---------------- Fetch Call ---------------- */
 // eslint-disable-next-line default-param-last
-export async function myAPI(method, url, body = null, header) {
+export async function myAPI(method, url, body = null, customHeaders = {}) {
   const options = { method };
+
+  // 1. Create a clean headers object.
+  // Using default param 'customHeaders = {}' ensures this is never undefined.
+  // We use spread {...} to create a copy so we don't modify the original.
+  const headers = { ...customHeaders };
+
   if (body) {
-    options.headers = header !== undefined ? header : { 'Content-Type': 'application/json' };
-    options.body = JSON.stringify(body);
+    // 2. Check if body is FormData
+    if (body instanceof FormData) {
+      // Do NOT stringify FormData
+      options.body = body;
+
+      // CRITICAL: Remove 'Content-Type'.
+      // Let the browser set it to "multipart/form-data; boundary=..."
+      if (headers['Content-Type']) {
+        delete headers['Content-Type'];
+      }
+    } else {
+      // 3. Handle JSON Body
+      options.body = JSON.stringify(body);
+
+      // Ensure Content-Type is JSON (if not overridden by customHeaders)
+      if (!headers['Content-Type']) {
+        headers['Content-Type'] = 'application/json';
+      }
+    }
   }
+
+  // 4. Assign the sanitized headers object to options
+  options.headers = headers;
+
   const response = await fetch(url, options);
+
   if (!response.ok) throw new Error(`Request failed: ${response.status}`);
   const text = await response.text();
   try {
@@ -307,6 +335,21 @@ export async function myAPI(method, url, body = null, header) {
     return text;
   }
 }
+// export async function myAPI(method, url, body = null, header) {
+//   const options = { method };
+//   if (body) {
+//     options.headers = header !== undefined ? header : { 'Content-Type': 'application/json' };
+//     options.body = JSON.stringify(body);
+//   }
+//   const response = await fetch(url, options);
+//   if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+//   const text = await response.text();
+//   try {
+//     return JSON.parse(text);
+//   } catch (e) {
+//     return text;
+//   }
+// }
 /* ---------------- Expose to window ---------------- */
 window.hlx = window.hlx || {};
 window.hlx.utils = {

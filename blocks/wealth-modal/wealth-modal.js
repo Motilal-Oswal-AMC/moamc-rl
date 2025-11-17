@@ -227,8 +227,8 @@ export default function decorate(block) {
       } else assocError.textContent = '';
     }
 
-    inputarg.classList.toggle('error', !valid && input.value.trim() !== '');
-    toggleErrorIcon(input, valid);
+    inputarg.classList.toggle('error', !valid && inputarg.value.trim() !== '');
+    toggleErrorIcon(inputarg, valid);
     return valid;
   }
   dataMapMoObj.validateField = validateField;
@@ -256,7 +256,7 @@ export default function decorate(block) {
     if (validateForm()) {
       // console.log('Form is valid. Submitting...');
       try {
-        const formData = {
+        const objreq = {
           name: nameInput.value.trim(),
           mobile: phoneInput.value.trim(),
           email: emailInput.value.trim(),
@@ -271,13 +271,13 @@ export default function decorate(block) {
         };
         const headers = {
           'Content-Type': 'application/json',
-          'User-Agent': 'WEB/MultipleCampaign',
+          'X-Encrypted-Key': 'N',
         };
 
         const response = await myAPI(
           'POST',
           'https://mf.moamc.com/ums/api/SaveLead/create-leads',
-          formData,
+          objreq,
           headers,
         );
 
