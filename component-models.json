@@ -573,6 +573,10 @@
           {
             "name": "QGLP Tab Component",
             "value": "qglp-tab-component"
+          },
+          {
+            "name": "Media Coverage Tab Component",
+            "value": "media-coverage-component"
           }
         ]
       },
