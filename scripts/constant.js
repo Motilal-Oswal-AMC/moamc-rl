@@ -160,8 +160,8 @@ const dataMapMoObj = {
     const mainContainer = blockdiv.closest('.section');
     if (!mainContainer) return;
 
-    const defaultPagination = mainContainer.querySelector('.section > div');
-    if (defaultPagination) defaultPagination.remove();
+    // const defaultPagination = mainContainer.querySelector('.section > div');
+    // if (defaultPagination) defaultPagination.remove();
 
     const paginationWrapper = document.createElement('div');
     paginationWrapper.className = 'pagination-wrapper';
