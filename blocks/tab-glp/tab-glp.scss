@@ -144,7 +144,7 @@
                 padding: 24px 12px;
                 max-width: unset;
                 height: 232px;
-                box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.04);
+                box-shadow: 0 0 24px 0 rgb(0 0 0 / 4%);
               }
 
               .glp-tab-ul1 {
@@ -422,6 +422,7 @@
           -ms-overflow-style: none;
           justify-content: flex-start;
           padding: 16px;
+
           // padding-top: 8px;
         }
       }

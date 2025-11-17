@@ -301,3 +301,14 @@ subSection.forEach((sublist) => {
 //   input.addEventListener('blur', toggleLabel);
 //   input.addEventListener('input', toggleLabel);
 // });
+
+// const listItems = document.querySelectorAll('.behind-the-content.our-author-list li');
+
+// listItems.forEach((item) => {
+//   const buttonsInBody = item.querySelectorAll('.cards-card-body .button-container:nth-child(2)');
+//   const buttonToMove = buttonsInBody[buttonsInBody.length - 1];
+//   const destination = item.querySelector('.cards-card-image');
+//   if (buttonToMove && destination) {
+//     destination.appendChild(buttonToMove);
+//   }
+// });

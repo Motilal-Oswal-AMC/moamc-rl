@@ -210,7 +210,7 @@
   margin-bottom: 91px;
 
   @include media(mobile) {
-    margin-top: 0px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
     padding-top: 56px;
@@ -360,14 +360,14 @@ main > .section.previous-studies-tab {
       font-style: normal;
       font-weight: 600;
       line-height: var(--heading-h1-line-height);
-      margin-top: 63px;
       margin: 0;
       padding-top: 40px;
       margin-top: 16px;
 
       @include media(mobile) {
         // margin-top: 25px;
-        margin: 0px;
+        margin: 0;
+
         // margin-bottom: 32px;
         font-size: 28px;
         line-height: var(--sub-header-large-line-height);
@@ -444,6 +444,7 @@ main > .section.previous-studies-tab {
       flex-direction: column;
       width: 100%;
       display: none;
+
       // bottom: -11px;
       margin: 6px 0 0;
       z-index: 10;
@@ -451,6 +452,7 @@ main > .section.previous-studies-tab {
       @include media(mobile) {
         width: 100%;
         padding: 0 15px;
+
         // bottom: -85px;
         background-color: #fff;
       }
@@ -482,7 +484,7 @@ main > .section.previous-studies-tab {
 
   @include media(mobile) {
     width: 100%;
-    gap: 0px;
+    gap: 0;
     padding-top: 74px;
     padding-bottom: 40px;
   }
@@ -503,9 +505,10 @@ main > .section.previous-studies-tab {
     font-style: normal;
     font-weight: 600;
     line-height: var(--heading-h6-line-height);
+
     // margin: unset;
-    margin-bottom: 40px;
-    margin: 0px;
+    // margin-bottom: 40px;
+    margin: 0 0 0 40px;
 
     @include media(mobile) {
       margin-top: 32px;
@@ -530,6 +533,7 @@ main > .section.previous-studies-tab {
   .aw-ctn2 {
     max-width: 712px;
     width: 100%;
+
     // height: unset;
   }
 
@@ -560,12 +564,12 @@ main > .section.previous-studies-tab {
 
   @include media(tab) {
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
   }
 
   @include media(mobile) {
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
   }
 
   .prev-sub {
@@ -608,6 +612,7 @@ main > .section.previous-studies-tab {
         font-style: normal;
         font-weight: 600;
         line-height: var(--body-medium-semibold-line-height);
+
         // margin-bottom: 4px;
         margin-top: 12px;
         padding-top: unset;
@@ -620,7 +625,7 @@ main > .section.previous-studies-tab {
         font-style: normal;
         font-weight: 400;
         line-height: 24px;
-        margin: 0px;
+        margin: 0;
         padding-top: unset;
 
         @include media(tab) {
@@ -630,7 +635,7 @@ main > .section.previous-studies-tab {
         @include media(mobile) {
           font-size: var(--body-small-regular-size);
           line-height: var(--label-large-line-height);
-          margin-top: 0px;
+          margin-top: 0;
           margin-bottom: 24px;
         }
       }
@@ -643,10 +648,16 @@ main > .section.previous-studies-tab {
       font-style: normal;
       font-weight: 600;
       line-height: var(--body-medium-semibold-line-height);
+
       // margin-top: 12px;
       // margin-bottom: 4px;
       margin: 0;
       border-radius: 8px;
+      background-color: #2c2a96;
+
+      @include media(mobile) {
+        height: 160px;
+      }
 
       div {
         &:first-child {
@@ -661,17 +672,16 @@ main > .section.previous-studies-tab {
             p {
               &:first-child {
                 position: absolute;
-                margin: 0px;
+                margin: 0;
                 width: 100%;
                 height: 100%;
 
                 &::before {
                   content: "";
-                  background: url(../icons/play-button.svg) center center no-repeat;
+                  background: url("../icons/play-button.svg") center center no-repeat;
                   width: 48px;
                   height: 48px;
                   border-radius: 8px;
-                  top: 0;
                   display: block;
                   position: absolute;
                   top: 50%;
@@ -680,10 +690,10 @@ main > .section.previous-studies-tab {
                 }
 
                 a {
-                  margin: 0px;
+                  margin: 0;
                   width: 100%;
                   height: 100%;
-                  padding: 0px;
+                  padding: 0;
                   background: transparent;
                   color: transparent;
                   position: absolute;
@@ -694,7 +704,7 @@ main > .section.previous-studies-tab {
             }
 
             p {
-              margin: 0px;
+              margin: 0;
 
               @include media(mobile) {
                 height: 160px;
@@ -716,13 +726,13 @@ main > .section.previous-studies-tab {
       }
     }
 
-    .embed {
-      background-color: #2c2a96;
+    // .embed {
+    //   background-color: #2c2a96;
 
-      @include media(mobile) {
-        height: 160px;
-      }
-    }
+    //   @include media(mobile) {
+    //     height: 160px;
+    //   }
+    // }
   }
 
   .co-branding-wrapper {
@@ -742,7 +752,7 @@ main > .section.previous-studies-tab {
           font-style: normal;
           font-weight: 600;
           line-height: var(--body-medium-semibold-line-height);
-          margin: 0 0 8px 0;
+          margin: 0 0 8px;
         }
 
         &:nth-child(2) {
@@ -754,10 +764,10 @@ main > .section.previous-studies-tab {
           line-height: var(--label-large-line-height);
           font-feature-settings: var(--font-features-default);
           max-width: 504px;
-          margin: 0 0 24px 0;
+          margin: 0 0 24px;
 
           @include media(mobile) {
-            margin: 0 0 33px 0;
+            margin: 0 0 33px;
             max-width: 100%;
           }
         }
@@ -827,8 +837,7 @@ main > .section.previous-studies-tab {
           display: grid; // switch to grid on mobile
           grid-template-columns: 1fr 1fr; // 2 columns
           // gap: 19px;
-          row-gap: 19px;
-          column-gap: 12px;
+          gap: 19px 12px;
           margin-top: 33px;
         }
 
