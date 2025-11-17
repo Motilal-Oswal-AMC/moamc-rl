@@ -569,6 +569,10 @@
           {
             "name": "Investor Education Key Investing",
             "value": "key-investing"
+          },
+          {
+            "name": "QGLP Tab Component",
+            "value": "qglp-tab-component"
           }
         ]
       },
