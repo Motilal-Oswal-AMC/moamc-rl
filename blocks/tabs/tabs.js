@@ -930,6 +930,8 @@ export default async function decorate(block) {
       prev.style.display = 'none';
       if (dsp !== null) {
         dsp.style.display = 'none';
+        dataMapMoObj.CLASS_PREFIXES = ['listindex'];
+        dataMapMoObj.addIndexed(dsp);
       }
       const eventvar = elemevent.parentElement;
       eventvar.addEventListener('click', () => {

@@ -569,6 +569,7 @@ main>.section.previous-studies-tab.tabs-container {
 }
 
 .default-content-wrapper.annual-wealth-wrap1 {
+
   h1,
   h2,
   h3,
@@ -892,7 +893,7 @@ main>.section.previous-studies-tab.tabs-container {
                 background-color: #464343;
               }
 
-              li {
+              li.comlist {
                 max-width: unset;
                 width: 100%;
 
@@ -918,6 +919,27 @@ main>.section.previous-studies-tab.tabs-container {
                     width: 24px;
                     height: 24px;
                   }
+                }
+
+                &.listindex5 {
+                  position: fixed;
+                  left: 50%;
+                  transform: translateY(-50%);
+                  margin: 0 auto;
+                  min-width: unset;
+                  width: max-content;
+                  bottom: 10%;
+                  background-color: var(--neutrals-white);
+                  color: var(--blue-1-800-primary);
+                  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+                  padding: 4px 14px;
+                  border-radius: 4px;
+                  font-size: 14px;
+                  line-height: 18px;
+                  font-weight: 400;
+                  font-family: var(--body);
+                  z-index: 10;
+                  display: none;
                 }
               }
             }
