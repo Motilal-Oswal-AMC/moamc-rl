@@ -581,6 +581,14 @@
           {
             "name": "Coverage Table Panel",
             "value": "coverage-table-panel"
+          },
+          {
+            "name":"Why Choose Us",
+            "value":"why-choose-us"
+          },
+          {
+            "name":"Why Choose Card",
+            "value":"why-choose-card"
           }
         ]
       },
