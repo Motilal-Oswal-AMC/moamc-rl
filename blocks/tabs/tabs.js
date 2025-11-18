@@ -969,23 +969,9 @@ export default async function decorate(block) {
       if (facebookBtn) {
         facebookBtn.addEventListener("click", (e) => {
           e.stopPropagation();
-          const { shareUrl, shareText } = getShareData();
-          // Use Web Share API if available (mobile-first approach)
-          if (navigator.share) {
-            navigator.share({
-              title: shareText,
-              text: shareText,
-              url: shareUrl
-            }).catch(() => {
-              // Fallback: Use Facebook Feed Dialog
-              const fbLink = `https://www.facebook.com/dialog/feed?app_id=YOUR_APP_ID&link=${encodeURIComponent(shareUrl)}&redirect_uri=${encodeURIComponent(window.location.href)}`;
-              window.open(fbLink, "_blank");
-            });
-          } else {
-            // Use Facebook Feed Dialog directly
-            const fbLink = `https://www.facebook.com/dialog/feed?app_id=YOUR_APP_ID&link=${encodeURIComponent(shareUrl)}&redirect_uri=${encodeURIComponent(window.location.href)}`;
-            window.open(fbLink, "_blank");
-          }
+          const { shareUrl } = getShareData();
+          const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+          window.open(fbLink, "_blank");
         });
       }
 
@@ -1009,6 +995,30 @@ export default async function decorate(block) {
           const twLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
           window.open(twLink, "_blank");
         });
+      }
+
+      const copyfunc = dspblk.querySelector('.listindex4');
+      if (copyfunc) {
+        copyfunc.addEventListener('click', (e) => {
+          const urlCopied = dspblk.querySelector('.listindex5');
+          e.stopPropagation();
+          try {
+            const currentUrl = window.location.href;
+            navigator.clipboard.writeText(currentUrl);
+
+            urlCopied.style.display = 'block';
+            setTimeout(() => {
+              urlCopied.style.display = 'none';
+              // breadcrumb.style.display = 'none';
+            }, 1000);
+          } catch (err) {
+            urlCopied.textContent = 'Could not copy URL. Please make sure the window is focused.';
+            urlCopied.style.display = 'block';
+            setTimeout(() => {
+              urlCopied.style.display = 'none';
+            }, 1000);
+          }
+        })
       }
     });
 
