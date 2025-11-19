@@ -605,6 +605,10 @@
           {
             "name": "QGLP Static Component",
             "value": "qglp-static-Component"
+          },
+          {
+            "name": "Testing",
+            "value": "testing"
           }
         ]
       },
