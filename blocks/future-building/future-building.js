@@ -163,7 +163,7 @@ export default function decorate(block) {
       if (mainContainer) {
         // Select all the card items
         const items = Array.from(mainContainer.querySelectorAll('.swiper-slide'));
-        const itemsPerPage = items.slice(0, 12).length;
+        const itemsPerPage = items.slice(0, 9).length;
 
         if (items.length >= itemsPerPage) {
           dataMapMoObj.setupPagination(mainContainer, items, itemsPerPage);
