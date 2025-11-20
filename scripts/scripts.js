@@ -502,7 +502,7 @@ if (calculatorsCard != null) {
 // // article
 function articleStructure() {
   // Investor Education article left and right wrapper
-  if (window.location.href.includes('/investor-education/all-articles/') || window.location.href.includes('/motilal-oswal-edge/article-details')  || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-image') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-d') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-image') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-video')) {
+  if (window.location.href.includes('/investor-education/all-articles/') || window.location.href.includes('/motilal-oswal-edge/article-details') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-image') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-d') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-image') || window.location.href.includes('/motilal-oswal-edge/mo-edge-article-details-video')) {
     const maincloser = document.querySelector('main');
     const rightSub = maincloser.querySelectorAll('.article-sub-right');
     const rightarticle = maincloser.querySelector('.article-right-wrapper');
@@ -618,3 +618,27 @@ if (chooseusCard != null) {
   ];
   dataMapMoObj.addIndexed(chooseusCard);
 }
+
+// qglp static class appending
+const qglpStaticComponent = document.querySelector('.qglp-static-component');
+if (qglpStaticComponent != null) {
+  dataMapMoObj.CLASS_PREFIXES = ['qglp-static-ctn', 'qglp-static-ext', 'qglp-static-int', 'qglp-static-wrp', 'qglp-static-box', 'qglp-static-ls-ul', 'qglp-static-ls-li'];
+  dataMapMoObj.addIndexed(qglpStaticComponent);
+}
+
+// why qglp componet  start
+const whyQGLPComponent = document.querySelector('.why-qglp .default-content-wrapper');
+if (whyQGLPComponent != null) {
+  dataMapMoObj.CLASS_PREFIXES = ['why-qglp-ctn', 'why-qglp-ext', 'why-qglp-int', 'why-qglp-wrp', 'why-qglp-box', 'why-qglp-ls-ul', 'why-qglp-ls-li'];
+  dataMapMoObj.addIndexed(whyQGLPComponent);
+}
+// why qglp componet end
+
+// why qglp componet  start
+const promiseQGLP = document.querySelector('.promise-qglp .default-content-wrapper');
+if (promiseQGLP != null) {
+  dataMapMoObj.CLASS_PREFIXES = ['promise-qglp-ctn', 'promise-qglp-ext', 'promise-qglp-int', 'promise-qglp-wrp', 'promise-qglp-box'];
+  dataMapMoObj.addIndexed(promiseQGLP);
+}
+// why qglp componet end
+
