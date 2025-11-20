@@ -513,14 +513,10 @@ main > .section.previous-studies-tab.tabs-container > .default-content-wrapper:f
 @media (max-width: 768px) {
   main > .section.previous-studies-tab.tabs-container > .default-content-wrapper:first-child {
     padding-top: 24px;
-  }
-}
-@media (max-width: 768px) {
-  main > .section.previous-studies-tab.tabs-container .default-content-wrapper {
     margin-top: unset;
   }
 }
-main > .section.previous-studies-tab.tabs-container .default-content-wrapper p {
+main > .section.previous-studies-tab.tabs-container > .default-content-wrapper:first-child > p {
   color: var(--blue-1-800-primary);
   font-family: var(--title);
   font-size: var(--heading-h1-size);
@@ -532,7 +528,7 @@ main > .section.previous-studies-tab.tabs-container .default-content-wrapper p {
   margin-top: 16px;
 }
 @media (max-width: 768px) {
-  main > .section.previous-studies-tab.tabs-container .default-content-wrapper p {
+  main > .section.previous-studies-tab.tabs-container > .default-content-wrapper:first-child > p {
     margin: 0;
     font-size: 28px;
     line-height: var(--sub-header-large-line-height);
@@ -670,7 +666,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     max-width: 100%;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist p:nth-child(1) {
+.prev-main-wrapper .co-branding-wrapper .comlist p.awsubctn-innerchild1 {
   color: var(--neutrals-900);
   font-family: var(--body);
   font-size: var(--body-medium-semibold-size);
@@ -679,7 +675,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   line-height: var(--body-medium-semibold-line-height);
   margin: 0 0 8px;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist p:nth-child(2) {
+.prev-main-wrapper .co-branding-wrapper .comlist p.awsubctn-innerchild2 {
   color: var(--text-body);
   font-family: var(--body);
   font-size: var(--body-small-regular-size);
@@ -691,12 +687,12 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   margin: 0 0 24px;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist p:nth-child(2) {
+  .prev-main-wrapper .co-branding-wrapper .comlist p.awsubctn-innerchild2 {
     margin: 0 0 33px;
     max-width: 100%;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist p:nth-child(3) {
+.prev-main-wrapper .co-branding-wrapper .comlist p.awsubctn-innerchild3 {
   color: var(--neutrals-900);
   font-family: var(--body);
   font-size: var(--body-medium-semibold-size);
@@ -747,7 +743,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     line-height: 16px;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
@@ -755,19 +751,19 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   gap: 16px;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 19px 12px;
     margin-top: 33px;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(1) {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul1 {
   max-width: 168px;
   width: 100%;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(1):nth-child(1) {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul1:nth-child(1) {
     grid-column: 1/-1;
     width: 100%;
     max-width: unset;
@@ -775,7 +771,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     height: 32px;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(1) .button-container .button {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul1 .button-container .button {
   border-radius: var(--border-radius-8);
   background: var(--blue-1-800-primary);
   padding: var(--spacing-8) var(--spacing-12);
@@ -794,25 +790,25 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-weight: 500;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(1) .button-container .button {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul1 .button-container .button {
     font-size: 14px;
     line-height: 16px;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(2) {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul2 {
   display: flex;
   align-items: center;
   gap: 4px;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(2) {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul2 {
     justify-content: start;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(2) .button-container {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul2 .button-container {
   all: unset;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(2) .button-container .button {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul2 .button-container .button {
   padding: 0;
   margin: 0;
   background-color: transparent;
@@ -830,12 +826,12 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-weight: 400;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(2) .button-container .button {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul2 .button-container .button {
     font-size: var(--paragraph-xsmall-regular-size);
     line-height: var(--paragraph-xsmall-regular-line-height);
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -843,11 +839,11 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   cursor: pointer;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 {
     justify-content: start;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) p {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 p.comlist {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -860,20 +856,20 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-weight: 400;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) p {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 p.comlist {
     font-size: var(--paragraph-xsmall-regular-size);
     line-height: var(--paragraph-xsmall-regular-line-height);
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) p span.icon {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 p.comlist span.icon {
   width: 24px;
   height: 24px;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) p span.icon img {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 p.comlist span.icon img.comlist {
   width: 100%;
   height: 100%;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist {
   position: absolute;
   top: 21px;
   margin: 9px 0 0;
@@ -888,7 +884,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   padding: 2px 6px;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist {
     bottom: 27px;
     right: 3px;
     width: 170px;
@@ -896,24 +892,24 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     padding: 5px;
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul::-webkit-scrollbar {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist::-webkit-scrollbar {
   width: 3px;
   background-color: #464343;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul::-webkit-scrollbar-track {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist::-webkit-scrollbar-track {
   width: 3px;
   background-color: #fff;
   border-radius: 0 1px 1px 0;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul::-webkit-scrollbar-thumb {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist::-webkit-scrollbar-thumb {
   width: 3px;
   background-color: #464343;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul li.comlist {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist li.comlist {
   max-width: unset;
   width: 100%;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul li.comlist a {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist li.comlist a.comlist {
   padding: 3px 0;
   display: flex;
   align-items: center;
@@ -927,16 +923,16 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-weight: 400;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul li.comlist a {
+  .prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist li.comlist a.comlist {
     font-size: var(--paragraph-xsmall-size);
     line-height: var(--paragraph-xsmall-line-height);
   }
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul li.comlist a span.icon {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist li.comlist a.comlist span.icon {
   width: 24px;
   height: 24px;
 }
-.prev-main-wrapper .co-branding-wrapper .comlist ul > li:nth-child(3) ul li.comlist.listindex5 {
+.prev-main-wrapper .co-branding-wrapper .comlist ul.awsubctn-innerchild5 > li.awsubctn-innerchild5-ul3 ul.comlist li.comlist.listindex5 {
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
@@ -992,7 +988,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     margin-top: unset;
   }
 }
-.prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.comlist:nth-child(1) {
+.prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.aw-subctnin1 {
   color: var(--neutrals-900, #212121);
   font-family: var(--body);
   font-size: var(--body-medium-semibold-size);
@@ -1002,7 +998,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   margin-top: 12px;
   padding-top: unset;
 }
-.prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.comlist:nth-child(2) {
+.prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.aw-subctnin2 {
   color: var(--text-body);
   font-family: var(--body);
   font-size: var(--body-medium-regular-size);
@@ -1013,12 +1009,12 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   padding-top: unset;
 }
 @media (max-width: 1025px) {
-  .prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.comlist:nth-child(2) {
+  .prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.aw-subctnin2 {
     margin-bottom: 24px;
   }
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.comlist:nth-child(2) {
+  .prev-main-wrapper .prev-sub .default-content-wrapper.aw-subctn2 p.aw-subctnin2 {
     font-size: var(--body-small-regular-size);
     line-height: var(--label-large-line-height);
     margin-top: 0;
@@ -1077,7 +1073,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.prev-main-wrapper .prev-sub .embed div div:first-child p.button-container:first-child a {
+.prev-main-wrapper .prev-sub .embed div div:first-child p.button-container:first-child a.button {
   margin: 0;
   width: 100%;
   height: 100%;
@@ -1088,15 +1084,15 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   top: 0;
   left: 0;
 }
-.prev-main-wrapper .prev-sub .embed div div:first-child p {
+.prev-main-wrapper .prev-sub .embed div div:first-child p.video-child2 {
   margin: 0;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .prev-sub .embed div div:first-child p {
+  .prev-main-wrapper .prev-sub .embed div div:first-child p.video-child2 {
     height: 160px;
   }
 }
-.prev-main-wrapper .prev-sub .embed div div:first-child p picture img {
+.prev-main-wrapper .prev-sub .embed div div:first-child p.video-child2 picture.comlist img.picture-child4 {
   width: 712px;
   height: 284px;
   flex-shrink: 0;
@@ -1104,7 +1100,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
      object-fit: contain;
 }
 @media (max-width: 768px) {
-  .prev-main-wrapper .prev-sub .embed div div:first-child p picture img:last-child {
+  .prev-main-wrapper .prev-sub .embed div div:first-child p.video-child2 picture.comlist img.picture-child4:last-child {
     height: 100%;
     margin-top: -2px;
     -o-object-fit: fill;
@@ -1198,7 +1194,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   display: none;
 }
 
-.qglp-static-Component ul {
+.qglp-static-component ul {
   list-style: none;
 }
 .why-choose-us .choose-title1 {
@@ -1226,7 +1222,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
     font-size: 34px;
     line-height: 40px;
     margin-bottom: 8px;
-    margin-top: 0px;
+    margin-top: 0;
   }
 }
 .why-choose-us .choose-title1 .choose-us-para2 {
@@ -1237,7 +1233,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-style: normal;
   font-weight: 400;
   line-height: 24px;
-  margin-top: 0px;
+  margin-top: 0;
   margin-bottom: 28px;
   max-width: 712px;
   width: 100%;
@@ -1250,10 +1246,10 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   }
 }
 .why-choose-us .choose-title1 .choose-us-para3 {
-  margin: 0px;
+  margin: 0;
 }
 .why-choose-us .choose-title1 .choose-us-para3 a {
-  color: var(--Text-White, #FFF);
+  color: var(--text-white, #FFF);
   text-align: center;
   font-feature-settings: "ss01" on, "ss04" on, "cv01" on, "cv02" on, "cv03" on, "cv04" on, "cv06" on, "cv09" on, "cv10" on, "cv11" on;
   font-family: var(--body);
@@ -1271,14 +1267,14 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
 }
 @media (max-width: 768px) {
   .why-choose-us .choose-title1 .choose-us-para3 a {
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 30px;
     display: block;
   }
 }
 .why-choose-us .choose-title1 .choose-us-para5 {
   display: none;
-  margin: 0px;
+  margin: 0;
 }
 @media (max-width: 768px) {
   .why-choose-us .choose-title1 .choose-us-para5 {
@@ -1286,8 +1282,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   }
 }
 .why-choose-us .choose-title1 .choose-us-para5 .choose-us-img1 {
-  display: none;
-  margin: 0px;
+  margin: 0;
   height: 100%;
   display: block;
 }
@@ -1298,12 +1293,12 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   }
 }
 .why-choose-us .choose-title1 .choose-us-para4 {
-  margin: 0px;
+  margin: 0;
 }
 @media (max-width: 768px) {
   .why-choose-us .choose-title1 .choose-us-para4 {
     display: none;
-    margin: 0px;
+    margin: 0;
   }
 }
 .why-choose-us .choose-title1 .choose-us-para4 .choose-us-img1 {
@@ -1313,7 +1308,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
 @media (max-width: 768px) {
   .why-choose-us .choose-title1 .choose-us-para4 .choose-us-img1 {
     display: none;
-    margin: 0px;
+    margin: 0;
   }
 }
 
@@ -1323,7 +1318,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
 }
 @media (max-width: 768px) {
   .section.why-choose-card {
-    padding: 0px;
+    padding: 0;
     margin-bottom: 80px;
   }
 }
@@ -1362,7 +1357,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
 }
 .section.why-choose-card .cards-wrapper .cards li .cards-card-body {
   flex: 1;
-  margin: 0px;
+  margin: 0;
 }
 .section.why-choose-card .cards-wrapper .cards li .cards-card-body h2 {
   color: var(--blue-1-800-primary);
@@ -1372,7 +1367,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-style: normal;
   font-weight: 600;
   line-height: var(--body-large-semibold-line-height);
-  margin: 0px 0px 8px 0px;
+  margin: 0 0 8px;
   max-width: 510px;
   width: 100%;
 }
@@ -1389,7 +1384,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   font-style: normal;
   font-weight: 400;
   line-height: var(--label-large-line-height);
-  margin: 0px;
+  margin: 0;
   max-width: 510px;
   width: 100%;
 }
@@ -1399,7 +1394,7 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .section.why-choose-card .cards-wrapper .cards ul {
     gap: 32px 0;
   }
