@@ -617,7 +617,11 @@
           {
             "name":"High Image Component",
             "value":"high-image-component"
-          } 
+          },
+          {
+            "name":"Skin Moamc Component",
+            "value":"skin-moamc-component"
+          }
         ]
       },
       {
