@@ -624,3 +624,11 @@ if (chooseusCard != null) {
   dataMapMoObj.addIndexed(chooseusCard);
 }
 
+// why qglp componet  start
+const whyQGLPComponent = document.querySelector('.why-qglp .default-content-wrapper');
+
+if (whyQGLPComponent != null) {
+  dataMapMoObj.CLASS_PREFIXES = ['why-qglp-ctn', 'why-qglp-ext', 'why-qglp-int', 'why-qglp-wrp', 'why-qglp-box', 'why-qglp-ls-ul', 'why-qglp-ls-li'];
+  dataMapMoObj.addIndexed(whyQGLPComponent);
+}
+// why qglp componet end
