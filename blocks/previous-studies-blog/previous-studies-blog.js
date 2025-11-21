@@ -53,4 +53,7 @@ export default async function decorate(block) {
   playBtn.forEach((e) => {
     dataMapMoObj.altFunction(e, 'play-btn-icon');
   });
+
+  const psCont1 = document.querySelector('.previous-studies-blog-wrapper .previous-studies-blog .ps-ex1 .ps-in1 .ps-cont1');
+  psCont1.classList.add("ps-cont-plybtn");
 }
