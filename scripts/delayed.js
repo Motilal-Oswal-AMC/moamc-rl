@@ -148,6 +148,9 @@ if (window.innerWidth <= 767) {
   // 
 }
 
+// let container = '<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBBJHXVS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>';
+// //   document.body.innerHTML+= container;
+// document.body.appendChild(`<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NBBJHXVS" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>`);
 // function articleStructure() {
 //    // Investor Education article left and right wrapper
 //   if (window.location.href.includes('/investor-education/all-articles/') || window.location.href.includes('/motilal-oswal-edge/article-details')) {

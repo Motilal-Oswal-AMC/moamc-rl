@@ -617,4 +617,3 @@ if (chooseusCard != null) {
   ];
   dataMapMoObj.addIndexed(chooseusCard);
 }
-
