@@ -1,30 +1,31 @@
 {
   "definitions": [
     {
-      "title": "Cards",
-      "id": "cards",
+      "title": "Our Service",
+      "id": "our-service",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Cards",
-              "filter": "cards"
+              "name": "Our Service",
+              "model": "our-service",
+              "filter": "our-service"
             }
           }
         }
       }
     },
     {
-      "title": "Card",
-      "id": "card",
+      "title": "Our Service Item",
+      "id": "our-service-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "Card",
-              "model": "card"
+              "name": "Our Service Item",
+              "model": "our-service-item"
             }
           }
         }
@@ -33,30 +34,28 @@
   ],
   "models": [
     {
-      "id": "card",
+      "id": "our-service-item",
       "fields": [
         {
-          "component": "reference",
-          "valueType": "string",
-          "name": "image",
-          "label": "Image",
-          "multi": false
-        },
-        {
           "component": "richtext",
-          "name": "text",
+          "name": "richtext",
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Fragment URL"
         }
       ]
     }
   ],
   "filters": [
     {
-      "id": "cards",
+      "id": "our-service",
       "components": [
-        "card"
+        "our-service-item"
       ]
     }
   ]

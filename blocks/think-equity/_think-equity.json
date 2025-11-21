@@ -1,15 +1,15 @@
 {
   "definitions": [
     {
-      "title": "Hero",
-      "id": "hero",
+      "title": "Think Equity",
+      "id": "think-equity",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Hero",
-              "model": "hero"
+              "name": "Think Equity",
+              "model": "think-equity"
             }
           }
         }
@@ -18,28 +18,25 @@
   ],
   "models": [
     {
-      "id": "hero",
+      "id": "think-equity",
       "fields": [
         {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Enter Context think equity",
+          "valueType": "string"
+        },
+        {
           "component": "reference",
-          "valueType": "string",
-          "name": "image",
+          "name": "twoimage",
           "label": "Image",
           "multi": false
         },
         {
           "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Alt",
-          "value": ""
-        },
-        {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Text",
-          "valueType": "string"
+          "name": "twoimageAlt",
+          "label": "Alt Text"
         }
       ]
     }

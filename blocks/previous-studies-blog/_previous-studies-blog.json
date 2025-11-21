@@ -1,0 +1,82 @@
+{
+  "definitions": [
+    {
+      "title": "Previous Studies Blog",
+      "id": "previous-studies-blog",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Previous Studies Blog",
+              "filter": "previous-studies-blog"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Previous Studies Blog Item",
+      "id": "previous-studies-blog-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Previous Studies Blog Item",
+              "model": "previous-studies-blog-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "previous-studies-blog-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text-one",
+          "value": "",
+          "label": "Enter the text authors name",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "text-two",
+          "value": "",
+          "label": "Enter the text authors name",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "previous-studies-blog",
+      "components": [
+        "previous-studies-blog-item"
+      ]
+    }
+  ]
+}

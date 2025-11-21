@@ -1,0 +1,175 @@
+{
+  "definitions": [
+    {
+      "title": "Our Fund Block",
+      "id": "our-funds-block",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Our Fund Block",
+              "filter": "our-funds-block"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Our Fund Block Item",
+      "id": "our-fund-block-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Our Fund Block Item",
+              "model": "our-fund-block-item"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Our Fund Left Item",
+      "id": "our-fund-left-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Our Fund Left Item",
+              "model": "our-fund-left-item"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Our Fund Right Item",
+      "id": "our-fund-right-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Our Fund Right Item",
+              "model": "our-fund-right-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "our-fund-block-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "title",
+          "label": "Title"
+        },
+        {
+          "component": "select",
+          "name": "titleType",
+          "label": "Title Type",
+          "options": [
+            {
+              "name": "h1",
+              "value": "h1"
+            },
+            {
+              "name": "h2",
+              "value": "h2"
+            },
+            {
+              "name": "h3",
+              "value": "h3"
+            },
+            {
+              "name": "h4",
+              "value": "h4"
+            },
+            {
+              "name": "h5",
+              "value": "h5"
+            },
+            {
+              "name": "h6",
+              "value": "h6"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "name": "col_placeholder",
+          "label": "Enter Placeholder for Input Field"
+        },
+        {
+          "component": "richtext",
+          "name": "col_watchlist",
+          "value": "",
+          "label": "Enter Watchlist Context",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "col_treinding",
+          "value": "",
+          "label": "Enter Trending Context",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "our-fund-left-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "col_leftfilter",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "our-fund-right-item",
+      "fields": [
+        {
+          "component": "text",
+          "name": "col_sort",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "name": "col_return",
+          "label": "Title"
+        },
+        {
+          "component": "text",
+          "name": "col_returnmobile",
+          "label": "Title"
+        },
+        {
+          "component": "richtext",
+          "name": "col_richtext",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "our-funds-block",
+      "components": [
+        "our-fund-block-item",
+        "our-fund-left-item",
+        "our-fund-right-item"
+      ]
+    }
+  ]
+}
