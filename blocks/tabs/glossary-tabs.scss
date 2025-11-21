@@ -196,8 +196,10 @@
       margin: 0;
     }
 
-    .comlist {
+    .defitem1,
+    .defitem2 {
       margin: 0;
+
       @include font-style(
         var(--disclaimer-xsmall-size),
         var(--disclaimer-xsmall-line-height),

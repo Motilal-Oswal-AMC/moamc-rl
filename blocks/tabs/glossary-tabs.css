@@ -158,7 +158,8 @@
     margin: 0;
   }
 }
-.glossary-tabs.our-experts-container > .default-content-wrapper .comlist {
+.glossary-tabs.our-experts-container > .default-content-wrapper .defitem1,
+.glossary-tabs.our-experts-container > .default-content-wrapper .defitem2 {
   margin: 0;
   font-size: var(--disclaimer-xsmall-size);
   line-height: var(--disclaimer-xsmall-line-height);
@@ -169,12 +170,14 @@
   padding-bottom: 4px;
 }
 @media (max-width: 768px) {
-  .glossary-tabs.our-experts-container > .default-content-wrapper .comlist {
+  .glossary-tabs.our-experts-container > .default-content-wrapper .defitem1,
+  .glossary-tabs.our-experts-container > .default-content-wrapper .defitem2 {
     font-size: var(--paragraph-xsmall-regular-size);
     line-height: var(--paragraph-xsmall-regular-line-height);
   }
 }
-.glossary-tabs.our-experts-container > .default-content-wrapper .comlist.defitem2 {
+.glossary-tabs.our-experts-container > .default-content-wrapper .defitem1.defitem2,
+.glossary-tabs.our-experts-container > .default-content-wrapper .defitem2.defitem2 {
   color: var(--text-disclaimer);
   padding-bottom: 0;
 }/*# sourceMappingURL=glossary-tabs.css.map */
