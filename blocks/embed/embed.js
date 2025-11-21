@@ -1,4 +1,4 @@
-/*    */
+/* */
 /*
  * Embed Block
  * Show videos and social posts directly on your page
@@ -10,7 +10,7 @@ import dataMapMoObj from '../../scripts/constant.js';
 import {
   div, table, thead, tbody, tr, p,
 } from '../../scripts/dom-helpers.js';
-
+import { createModal } from '../modal/modal.js';
 const loadScript = (url, callback, type) => {
   const head = document.querySelector('head');
   const script = document.createElement('script');
@@ -22,16 +22,24 @@ const loadScript = (url, callback, type) => {
   head.append(script);
   return script;
 };
-
+const getYouTubeThumbnailUrl = (url) => {
+  const usp = new URLSearchParams(url.search);
+  let vid = usp.get('v');
+  if (url.origin.includes('youtu.be')) {
+    [, vid] = url.pathname.split('/');
+  }
+  if (vid) {
+    return `https://img.youtube.com/vi/${vid}/hqdefault.jpg`;
+  }
+  return null;
+};
 const getDefaultEmbed = (url) => `<div style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;">
       <iframe src="${url.href}" style="border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;" allowfullscreen=""
         scrolling="no" allow="encrypted-media" title="Content from ${url.hostname}" loading="lazy">
       </iframe>
     </div>`;
-
 const embedYoutube = (url, autoplay) => {
   const usp = new URLSearchParams(url.search);
-  // const suffix = autoplay ? '&muted=1&autoplay=1' : '';
   const suffix = autoplay ? '&autoplay=1&unmute=1' : '&autoplay=0&unmute=1';
   let vid = usp.get('v') ? encodeURIComponent(usp.get('v')) : '';
   const embed = url.pathname;
@@ -44,7 +52,6 @@ const embedYoutube = (url, autoplay) => {
       </div>`;
   return embedHTML;
 };
-
 const embedVimeo = (url, autoplay) => {
   const [, video] = url.pathname.split('/');
   const suffix = autoplay ? '?unmute=1&autoplay=1' : '';
@@ -56,18 +63,15 @@ const embedVimeo = (url, autoplay) => {
       </div>`;
   return embedHTML;
 };
-
 const embedTwitter = (url) => {
   const embedHTML = `<blockquote class="twitter-tweet"><a href="${url.href}"></a></blockquote>`;
   loadScript('https://platform.twitter.com/widgets.js');
   return embedHTML;
 };
-
-export const loadEmbed = (block, link, autoplay) => {
-  if (block.classList.contains('embed-is-loaded')) {
+export const loadEmbed = (block, link, autoplay, thumbnailUrl = null) => {
+  if (block.classList.contains('embed-is-loaded') && !autoplay) {
     return;
   }
-
   const EMBEDS_CONFIG = [
     {
       match: ['youtube', 'youtu.be'],
@@ -82,26 +86,57 @@ export const loadEmbed = (block, link, autoplay) => {
       embed: embedTwitter,
     },
   ];
-
   const config = EMBEDS_CONFIG.find((e) => e.match.some((match) => link.includes(match)));
   const url = new URL(link);
-  if (config) {
-    block.innerHTML = config.embed(url, autoplay);
-    block.classList = `block embed embed-${config.match[0]}`;
+  if (!thumbnailUrl && config && (config.match.includes('youtube') || config.match.includes('youtu.be'))) {
+    thumbnailUrl = getYouTubeThumbnailUrl(url);
+  }
+  if (thumbnailUrl && !autoplay) {
+    block.innerHTML = '';
+    block.classList.add('block', 'embed', `embed-${config ? config.match[0] : 'default'}`);
+    const wrapper = document.createElement('div');
+    wrapper.className = 'embed-placeholder';
+    
+// add  playbutton
+    wrapper.innerHTML = `
+      <div class="embed-placeholder-play">
+         <img src="/icons/play-button.svg" alt="Play Video" class="custom-play-icon" />
+      </div>`;
+    const img = document.createElement('img');
+    img.src = thumbnailUrl;
+    img.alt = 'Video Thumbnail';
+    img.className = 'embed-placeholder-thumbnail';
+    wrapper.prepend(img);
+    wrapper.addEventListener('click', async (e) => {
+      e.preventDefault();
+      // Create NEW container for the modal
+      const videoContainer = document.createElement('div');
+      
+      // Load iframe into new container
+      loadEmbed(videoContainer, link, true); 
+      // Open Modal
+      const { showModal } = await createModal([videoContainer]);
+      showModal();
+    });
+    block.append(wrapper);
   } else {
-    block.innerHTML = getDefaultEmbed(url);
-    block.classList = 'block embed';
+    if (config) {
+      block.innerHTML = config.embed(url, autoplay);
+      block.classList = `block embed embed-${config.match[0]}`;
+    } else {
+      block.innerHTML = getDefaultEmbed(url);
+      block.classList = 'block embed';
+    }
   }
   block.classList.add('embed-is-loaded');
 };
-
 export default function decorate(block) {
-  const placeholder = block.querySelector('picture');
   const link = block.querySelector('a').href;
   if (!block.closest('.media-coverage') && !block.closest('.prev-studies-wrapper')) {
     block.textContent = '';
   }
-  // wcs js
+  
+  // --- WCS / DataMapMoObj Logic ---
   try {
     const main = block.closest('main');
     const wcsLanding = main.querySelector('.wcs-landing');
@@ -109,25 +144,21 @@ export default function decorate(block) {
       dataMapMoObj.CLASS_PREFIXES = ['wcs', 'text', 'cta', 'media'];
       dataMapMoObj.addIndexed(wcsLanding);
     }
-
     const dropDownText = main.querySelector('.previous-studies-tab .annual-wealth-wrap2 .aw-ctn2 .aw-subctnin1');
     if (dropDownText) {
       dataMapMoObj.CLASS_PREFIXES = ['aw-subctnin1-innerchild', 'awsubctn-innerchild'];
       dataMapMoObj.addIndexed(dropDownText);
     }
-
     const prevStudyul = main.querySelector('.co-branding .awsubctn-innerchild5');
     if (prevStudyul) {
       dataMapMoObj.CLASS_PREFIXES = ['awsubctn-innerchild5-ul'];
       dataMapMoObj.addIndexed(prevStudyul);
     }
-
     const prevSocialLink = main.querySelector('.co-branding .awsubctn-innerchild5-ul3');
     if (prevSocialLink) {
       dataMapMoObj.CLASS_PREFIXES = ['socialLinking', 'socialLinking-inner', 'socialLinking-child'];
       dataMapMoObj.addIndexed(prevSocialLink);
     }
-
     const previousStudiesText = main.querySelector('.prev-main-wrapper .embed');
     if (previousStudiesText) {
       dataMapMoObj.CLASS_PREFIXES = ['video-wrap', 'video-inner', 'video-child', 'picture-wrap', 'picture-child'];
@@ -136,7 +167,6 @@ export default function decorate(block) {
   } catch (error) {
     // console.log('classes not appended');
   }
-
   const main = block.closest('main');
   if (main !== null) {
     const prevStudieswrapper = main.querySelectorAll('.prev-studies-wrapper');
@@ -147,34 +177,15 @@ export default function decorate(block) {
       });
     }
   }
-
   if (!block.closest('.prev-studies-wrapper') && !block.closest('.media-coverage')) {
-    if (placeholder && !block.closest('.media-coverage') && !block.closest('.prev-studies-wrapper')) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'embed-placeholder';
-      wrapper.innerHTML = '<div class="embed-placeholder-play"><button type="button" title="Play"></button></div>';
-      wrapper.prepend(placeholder);
-      wrapper.addEventListener('click', () => {
-        loadEmbed(block, link, true);
-      });
-      block.append(wrapper);
-    } else {
-      const observer = new IntersectionObserver((entries) => {
-        if (entries.some((e) => e.isIntersecting)) {
-          observer.disconnect();
-          if (block.closest('.wcs-landing')) {
-            loadEmbed(block, link, false);
-          } else {
-            loadEmbed(block, link);
-          }
-        }
-      });
-      observer.observe(block);
-    }
+    // This call handles everything: 
+    // Fetches YouTube thumbnail,Adds Custom Icon,Sets up Modal click handler 
+    loadEmbed(block, link, false);
   }
+  // --- Tab / Coverage Table Logic  ---
   const data = block.closest('main');
   if (data !== null && window.location.href.includes('/wcs/in/en/coverage')) {
-    if (!data.querySelector('.maintab')) {
+     if (!data.querySelector('.maintab')) {
       const subdata = data.querySelectorAll('.section');
       if (dataMapMoObj.objdata === undefined) {
         dataMapMoObj.objdata = {};
@@ -188,7 +199,6 @@ export default function decorate(block) {
           eldata.remove();
         }
       });
-      // console.log(dataMapMoObj.objdata);
       const divmain = div({ class: 'maintab' });
       Object.keys(dataMapMoObj.objdata).forEach((elobj, index) => {
         const innerdiv = div({ class: 'innerdiv' });
@@ -205,9 +215,6 @@ export default function decorate(block) {
             valueAry[index][inner].style.display = 'flex';
           }
           subinner.querySelector('.subbinner').innerHTML += valueAry[index][inner].outerHTML;
-          // subinner.querySelector('.section > .default-content-wrapper > p')
-          //   .classList.add('studytab-title');
-          // .append(valueAry[index][inner]);
           innerdiv.append(subinner);
         });
         buildtabblock(innerdiv);
@@ -219,12 +226,10 @@ export default function decorate(block) {
         container.querySelector('.maininnerdiv').innerHTML += innerdiv.outerHTML;
         divmain.append(container);
       });
-      // console.log(divmain);
       buildtabblock(divmain);
       if (!data.classList.contains('modal-wrapper')) {
         data.append(divmain);
       }
-
       const tableRender = (panel) => {
         const headkey = panel.querySelector('.section').getAttribute('data-tab-head-title');
         const key = panel.querySelector('.section').getAttribute('data-tab-title');
@@ -276,7 +281,6 @@ export default function decorate(block) {
           }
         }
       };
-
       data.querySelectorAll('.innerdiv').forEach((eldiv) => {
         eldiv.querySelectorAll('.tabs-list button').forEach((tabbtn) => {
           tabbtn.addEventListener('click', () => {
@@ -300,8 +304,6 @@ export default function decorate(block) {
         eldiv.querySelectorAll('[role=tabpanel]')[0]
           .setAttribute('aria-hidden', false);
       });
-
-      // Coverage Tab Dropdown
       const dropdownlist = divmain.querySelector('.tabs-list');
       let activeTab;
       Array.from(dropdownlist.children).forEach((el) => {
@@ -315,16 +317,13 @@ export default function decorate(block) {
         div({ class: 'tab-droplist' }),
       );
       tabDrodpwon.querySelector('.tab-droplist').append(dropdownlist);
-
       divmain.prepend(tabDrodpwon);
-
       const tabmainclick = divmain.querySelector('.tab-dropdown-wrap');
       tabmainclick.addEventListener('click', () => {
         const selectedTab = tabmainclick.querySelector('.selected-tab');
         const tabslistwrap = tabmainclick.querySelector('.tab-droplist');
         const tabslist = tabmainclick.querySelectorAll('.tabs-list .tabs-tab');
         tabmainclick.classList.toggle('active');
-
         if (!tabslistwrap.classList.contains('active')) {
           tabslist.forEach((tab) => {
             if (tab.getAttribute('aria-selected') === 'true') {
@@ -343,5 +342,6 @@ export default function decorate(block) {
       });
     }
   }
+  
   return block;
 }
