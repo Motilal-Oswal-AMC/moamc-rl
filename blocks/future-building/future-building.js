@@ -4,7 +4,6 @@ import {
   div,
   label,
   input,
-  img,
 } from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
@@ -73,12 +72,12 @@ export default function decorate(block) {
   };
 
   const imagesToFix = swiperWrapper.querySelectorAll('img[alt=""]');
-  imagesToFix.forEach((img) => {
-    const { iconName } = img.dataset;
+  imagesToFix.forEach((imgelem) => {
+    const { iconName } = imgelem.dataset;
     const altText = altTextMap[iconName];
 
     if (altText !== undefined) {
-      img.setAttribute('alt', altText);
+      imgelem.setAttribute('alt', altText);
     }
   });
   // =================================================================
@@ -140,43 +139,8 @@ export default function decorate(block) {
         },
       },
     };
+    Swiper(block, config);
   } else {
-    const leftarrow = document.createElement('div');
-    leftarrow.classList.add('swiper-button-prev');
-    block.appendChild(leftarrow);
-    const rightarrow = document.createElement('div');
-    rightarrow.classList.add('swiper-button-next');
-    block.appendChild(rightarrow);
-    const pagination = document.createElement('div');
-    pagination.classList.add('swiper-pagination');
-    const navigationWrap = document.createElement('div');
-    navigationWrap.classList.add('navigate-wrap');
-    navigationWrap.append(leftarrow, pagination, rightarrow);
-    // block.appendChild(pagination);
-    block.appendChild(navigationWrap);
-    config = {
-      slidesPerView: 'auto',
-      // spaceBetween: 12,
-      loop: true,
-      navigation: {
-        nextEl: block.querySelector('.swiper-button-next'),
-        prevEl: block.querySelector('.swiper-button-prev'),
-      }, // will be false if no buttons
-      pagination: {
-        el: block.querySelector('.swiper-pagination'), // Selector for your pagination container
-        clickable: true, // Makes pagination bullets clickable
-        renderBullet(index, className) {
-          // Customize the bullet content to display numbers
-          return `<span class="${className}">${index + 1}</span>`;
-        },
-      },
-      // breakpoints: {
-      //   769: {
-      //     spaceBetween: 16,
-      //   },
-      // },
-    };
-
     // creating Sear Box for Key Investing
     const keyInvestSection = block.closest('.section');
     const keyInvestSearchWrap = keyInvestSection.querySelector('.default-content-wrapper');
@@ -188,8 +152,24 @@ export default function decorate(block) {
       );
       keyInvestSearchWrap.append(keyInvestSearch);
     }
+
+    if (block.closest('main').querySelector('.key-investing')) {
+    // Find the container that has your special classes
+      const mainContainer = block.closest('main')
+        .querySelector('.key-investing .future-building');
+
+      // Only run this pagination logic if we are in the correct block
+      if (mainContainer) {
+        // Select all the card items
+        const items = Array.from(mainContainer.querySelectorAll('.swiper-slide'));
+        const itemsPerPage = items.slice(0, 9).length;
+
+        if (items.length >= itemsPerPage) {
+          dataMapMoObj.setupPagination(mainContainer, items, itemsPerPage);
+        }
+      }
+    }
   }
-  Swiper(block, config);
 
   window.addEventListener('resize', () => {
     if (window.innerWidth <= 767) {
@@ -200,9 +180,9 @@ export default function decorate(block) {
       if (futureBuildingSection && stayUpdatedSection) {
       // Move future-building-container above stay-updated
         stayUpdatedSection.parentNode.insertBefore(futureBuildingSection, stayUpdatedSection);
-        console.log('✅ future-building-container moved above stay-updated');
+        // console.log('✅ future-building-container moved above stay-updated');
       } else {
-        console.warn('⚠️ Required sections not found in DOM');
+        // console.warn('⚠️ Required sections not found in DOM');
       }
     }
   });

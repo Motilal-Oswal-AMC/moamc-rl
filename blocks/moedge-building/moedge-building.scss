@@ -1,11 +1,11 @@
 @use "sass:map";
-@use "../../styles/common-theme/css/variables_mixins"as *;
-@use "../../styles/common-theme/css/fluid-typography"as *;
+@use "../../styles/common-theme/css/variables_mixins" as *;
+@use "../../styles/common-theme/css/fluid-typography" as *;
 
 .moedge-building {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 
     & > div {
         display: flex;
@@ -35,7 +35,10 @@
                 display: block;
                 border-radius: var(--border-radius-8);
 
-                @include media (mobile) {
+                // @include media (mobile) {
+                // }
+
+                @media screen and (width <= 390px) {
                     height: 188px;
                 }
             }
@@ -200,7 +203,7 @@
                     line-height: 24px;
                     margin: 0;
 
-                    @include media(mobile){
+                    @include media(mobile) {
                         font-size: var(--paragraph-small-regular-size);
                         line-height: var(--paragraph-small-regular-line-height);
                     }
@@ -232,8 +235,8 @@
                         border-radius: unset;
                         margin: 0;
                         padding: 0;
-                        
-                        @include media(mobile){
+
+                        @include media(mobile) {
                             font-size: var(--text-link-small-size);
                             line-height: var(--text-link-small-line-height);
                         }
@@ -255,12 +258,128 @@
         // grid-template-columns: repeat(3, 1fr);
         flex-direction: unset;
         flex-wrap: wrap;
-        gap: 16px;
+
+        // justify-content: space-between;
+        gap: 40px 16px;
+
+        &-container {
+            .pagination-wrapper {
+                display: flex;
+                width: 340px;
+                justify-content: center;
+                align-items: center;
+                gap: 17.75px;
+                margin-top: 40px;
+                padding: 5px 0;
+
+                @include media(mobile) {
+                    padding: 0;
+                    padding-bottom: 40px;
+                }
+
+                button {
+                    display: flex;
+                    width: 22px;
+                    height: 22px;
+                    padding: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 10px;
+                    color: var(--neutrals-700, #616161);
+                    font-feature-settings: var(--font-features-default);
+                    font-family: var(--body, Inter);
+                    font-size: var(--label-medium-size, 14px);
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: var(--label-medium-line-height, 16px);
+                    flex-shrink: 0;
+                    border: none;
+                    background: transparent;
+                    cursor: pointer;
+                    margin: 0;
+                    transition: all 0.2s ease;
+                }
+            }
+
+            .pagination-btn {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                color: #666;
+
+                &:hover {
+                    background-color: #f0f0f0;
+                    color: #333;
+                }
+
+                &.active {
+                    color: var(--neutrals-white, #fff);
+                    border-radius: 80px;
+                    background: #2e2a94;
+                }
+            }
+
+            .pagination-arrow {
+                font-size: 20px;
+                font-weight: bold;
+                color: #2e2a94;
+                padding: 0 10px;
+                line-height: 1;
+                aspect-ratio: 4.36 / 7.54;
+                fill: rgb(63 63 63 / 80%);
+
+                &:disabled {
+                    color: #ccc;
+                    cursor: not-allowed;
+                }
+            }
+
+            .pagination-ellipsis {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 2px 6.5px;
+                color: rgb(63 63 63 / 80%);
+                font-family: var(--body);
+                font-size: 12px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: 18px;
+            }
+        }
+
+        .listing-investor-banner{
+            max-width: 100%;
+            width: 100%;
+            flex: unset;
+        }
     }
 
     .moedge-building > div {
         max-width: 32.468%;
         flex: 0 0 32.468%;
+
+        @include media(desktop-sm) {
+            max-width: 32.24%;
+            flex: 0 0 32.24%;
+        }
+
+        @include media(tab) {
+            max-width: 31.8%;
+            flex: 0 0 31.8%;
+        }
+
+        @include media(mobile) {
+            max-width: 100%;
+            flex: 0 0 100%;
+        }
+
+        &.hidden-item{
+            display: none !important;
+        }
 
         .moedge-build-sec1 {
             height: 220px;

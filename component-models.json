@@ -215,6 +215,10 @@
             "value": "investor-banner"
           },
           {
+            "name": "Listing Investor Banner",
+            "value": "listing-investor-banner"
+          },
+          {
             "name": "FDP FAQ Change",
             "value": "fdp-faq-change"
           },
@@ -583,12 +587,12 @@
             "value": "coverage-table-panel"
           },
           {
-            "name":"Why Choose Us",
-            "value":"why-choose-us"
+            "name": "Why Choose Us",
+            "value": "why-choose-us"
           },
           {
-            "name":"Why Choose Card",
-            "value":"why-choose-card"
+            "name": "Why Choose Card",
+            "value": "why-choose-card"
           },
           {
             "name": "Section One",
@@ -604,7 +608,7 @@
           },
           {
             "name": "QGLP Static Component",
-            "value": "qglp-static-Component"
+            "value": "qglp-static-component"
           },
           {
             "name": "Testing",
@@ -625,6 +629,26 @@
           {
             "name":"Why Matters Component",
             "value":"why-matters-component"
+          },
+          {
+            "name": "Mo Inter Business",
+            "value": "mo-inter-business"
+          },
+          {
+            "name": "our investing style",
+            "value": "our-investing-style"
+          },
+          {
+            "name": "Why QGLP",
+            "value": "why-qglp"
+          },
+          {
+            "name": "Promise QGLP",
+            "value": "promise-qglp"
+          },
+          {
+            "name": "Decoding QGLP Static",
+            "value": "decoding-qglp-static"
           }
         ]
       },
@@ -2605,6 +2629,25 @@
   },
   {
     "id": "edge-filter",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "one text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "two text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "global-gateway",
     "fields": [
       {
         "component": "richtext",
