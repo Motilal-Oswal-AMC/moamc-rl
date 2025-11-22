@@ -704,42 +704,47 @@ if (skinmoamcComponent != null) {
   dataMapMoObj.addIndexed(skinmoamcComponent);
 }
 
-const whymattersComponent = document.querySelector('.why-matters-component');
-if (whymattersComponent != null) {
-  dataMapMoObj.CLASS_PREFIXES = [
-    'why-matters-wrap',
-    'why-matters-heading',
-    'why-matters-para',
-    'why-matters-icon',
-    'why-matters-title',
-    'why-matters-sub-title',
-    'why-matters-text',
-    'why-matters-card-wrap',
-    'why-matters-card-icon',
-    'why-matters-card-text1',
-    'why-matters-card-text2',
-    'why-matters-card-text3',
-  ];
-  dataMapMoObj.addIndexed(whymattersComponent);
+try {
+  const whymattersComponent = document.querySelector('.why-matters-component');
+  if (whymattersComponent != null) {
+    dataMapMoObj.CLASS_PREFIXES = [
+      'why-matters-wrap',
+      'why-matters-heading',
+      'why-matters-para',
+      'why-matters-icon',
+      'why-matters-title',
+      'why-matters-sub-title',
+      'why-matters-text',
+      'why-matters-card-wrap',
+      'why-matters-card-icon',
+      'why-matters-card-text1',
+      'why-matters-card-text2',
+      'why-matters-card-text3',
+    ];
+    dataMapMoObj.addIndexed(whymattersComponent);
+  }
+
+  const container = document.querySelector('.section.why-matters-component.cards-container');
+
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('why-matters-wrapper-in');
+
+  const wrap1 = container.querySelector('.why-matters-wrap1');
+  const wrap2 = container.querySelector('.why-matters-wrap2');
+
+  container.insertBefore(wrapper, container.firstChild);
+
+  wrapper.appendChild(wrap1);
+  wrapper.appendChild(wrap2);
+
+  const section = document.querySelector('.promise-qglp');
+  const skinwrapper = document.createElement('div');
+  skinwrapper.classList.add('skin-in-the-game-wrapper');
+  section.parentNode.insertBefore(skinwrapper, section);
+  skinwrapper.appendChild(section);
+} catch (error) {
+  // console.log(error);
+
 }
-
-const container = document.querySelector('.section.why-matters-component.cards-container');
-
-const wrapper = document.createElement('div');
-wrapper.classList.add('why-matters-wrapper-in');
-
-const wrap1 = container.querySelector('.why-matters-wrap1');
-const wrap2 = container.querySelector('.why-matters-wrap2');
-
-container.insertBefore(wrapper, container.firstChild);
-
-wrapper.appendChild(wrap1);
-wrapper.appendChild(wrap2);
-
-const section = document.querySelector('.promise-qglp');
-const skinwrapper = document.createElement('div');
-skinwrapper.classList.add('skin-in-the-game-wrapper');
-section.parentNode.insertBefore(skinwrapper, section);
-skinwrapper.appendChild(section);
 
 // Skin the game static end
