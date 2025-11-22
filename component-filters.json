@@ -68,15 +68,13 @@
       "tab-glp",
       "mo-qglp",
       "rich-tabs",
-      "wealth-modal",
-      "blog-author-details",
-      "global-gateway"
+      "wealth-modal"
     ]
   },
   {
-    "id": "tabs",
+    "id": "accordion",
     "components": [
-      "tabsitem"
+      "accordion-item"
     ]
   },
   {
@@ -92,18 +90,9 @@
     ]
   },
   {
-    "id": "column",
+    "id": "cornerstones-advantage-cards",
     "components": [
-      "text",
-      "image",
-      "button",
-      "title"
-    ]
-  },
-  {
-    "id": "accordion",
-    "components": [
-      "accordion-item"
+      "cornerstones-advantage-cards-item"
     ]
   },
   {
@@ -113,21 +102,10 @@
     ]
   },
   {
-    "id": "home-banner",
+    "id": "global-dashboard",
     "components": [
-      "banner-item"
-    ]
-  },
-  {
-    "id": "cornerstones-advantage-title",
-    "components": [
-      "cornerstones-advantage-title-richtext"
-    ]
-  },
-  {
-    "id": "cornerstones-advantage-cards",
-    "components": [
-      "cornerstones-advantage-cards-item"
+      "global-image-item",
+      "global-text-item"
     ]
   },
   {
@@ -137,53 +115,9 @@
     ]
   },
   {
-    "id": "live-streaming",
+    "id": "home-banner",
     "components": [
-      "live-streaming-content"
-    ]
-  },
-  {
-    "id": "risk-o-meter",
-    "components": [
-      "risk-o-meter-item"
-    ]
-  },
-  {
-    "id": "key-facts",
-    "components": [
-      "key-item"
-    ]
-  },
-  {
-    "id": "risk-o-meter",
-    "components": [
-      "risk-o-meter-item"
-    ]
-  },
-  {
-    "id": "our-funds-block",
-    "components": [
-      "our-fund-block-item",
-      "our-fund-left-item",
-      "our-fund-right-item"
-    ]
-  },
-  {
-    "id": "popular-article",
-    "components": [
-      "popular-article-item"
-    ]
-  },
-  {
-    "id": "moedge-building",
-    "components": [
-      "moedge-building-item"
-    ]
-  },
-  {
-    "id": "login-page",
-    "components": [
-      "login-rt-item"
+      "banner-item"
     ]
   },
   {
@@ -194,10 +128,35 @@
     ]
   },
   {
-    "id": "global-dashboard",
+    "id": "key-facts",
     "components": [
-      "global-image-item",
-      "global-text-item"
+      "key-item"
+    ]
+  },
+  {
+    "id": "login-page",
+    "components": [
+      "login-rt-item"
+    ]
+  },
+  {
+    "id": "mo-qglp",
+    "components": [
+      "mo-qglp-item"
+    ]
+  },
+  {
+    "id": "moedge-building",
+    "components": [
+      "moedge-building-item"
+    ]
+  },
+  {
+    "id": "our-funds-block",
+    "components": [
+      "our-fund-block-item",
+      "our-fund-left-item",
+      "our-fund-right-item"
     ]
   },
   {
@@ -213,15 +172,15 @@
     ]
   },
   {
-    "id": "mo-qglp",
+    "id": "risk-o-meter",
     "components": [
-      "mo-qglp-item"
+      "risk-o-meter-item"
     ]
   },
   {
-    "id": "rich-tabs",
+    "id": "tabs",
     "components": [
-      "rich-tabsitem"
+      "tabsitem"
     ]
   }
 ]

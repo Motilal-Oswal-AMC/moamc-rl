@@ -10,7 +10,6 @@ import {
 } from '../../scripts/dom-helpers.js';
 import dataMapMoObj from '../../scripts/constant.js';
 import dataCfObj from '../../scripts/dataCfObj.js';
-// eslint-disable-next-line
 import {
   evaluateByDays,
   wishlist,

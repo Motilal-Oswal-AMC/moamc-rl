@@ -1,9 +1,8 @@
 import { toClassName } from '../../scripts/aem.js';
 import dataCfObj from '../../scripts/dataCfObj.js';
-// eslint-disable-next-line
 import fundCardblock from '../fund-card/fund-card.js';
 import {
-  button, a, div, input, ul, li, img, table, thead, tbody, tr, th, td, p,
+  button, a, div, input, ul, li, img, table, thead, tbody, tr, th, td,
 } from '../../scripts/dom-helpers.js';
 import dataMapMoObj from '../../scripts/constant.js';
 // import moEdge from './popular-acticles.js';
@@ -26,10 +25,6 @@ export default async function decorate(block) {
     tabpanel.setAttribute('aria-labelledby', `tab-${id}`);
     tabpanel.setAttribute('role', 'tabpanel');
 
-    if (i === 0 && tabpanel.querySelector('.section')) {
-      tabpanel.querySelector('.section').style.display = 'flex';
-    }
-
     // build tab button
     const tabbtn = document.createElement('button');
     tabbtn.className = 'tabs-tab';
@@ -48,13 +43,6 @@ export default async function decorate(block) {
       });
       tabpanel.setAttribute('aria-hidden', false);
       tabbtn.setAttribute('aria-selected', true);
-      if (tabpanel.querySelector('.tabs-list')) {
-        const idattr = tabpanel.querySelector('.tabs-list [aria-selected="true"]').getAttribute('id');
-        const attr = idattr.replace('tab', 'tabpanel');
-        tabpanel.querySelector(`#${attr}`).setAttribute('aria-hidden', false);
-        tabpanel.querySelector(`#${attr} .section`).style.display = 'block';
-        tabpanel.querySelector(`#${attr} .section`).style.display = 'flex';
-      }
     });
     tablist.append(tabbtn);
     tab.remove();
@@ -94,8 +82,7 @@ export default async function decorate(block) {
           }
         }
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).innerHTML = '';
-        dataCf.map((elementfunds) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`)
-          .append(fundCardblock(elementfunds)));
+        dataCf.map((elementfunds) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).append(fundCardblock(elementfunds)));
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).style.display = 'flex';
       });
     });
@@ -162,12 +149,11 @@ export default async function decorate(block) {
           dataMapMoObj.selectviewFunds = 'OtherFund';
         }
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).innerHTML = '';
-        dataCf.map((knowfunds) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`)
-          .append(fundCardblock(knowfunds)));
+        dataCf.map((knowfunds) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).append(fundCardblock(knowfunds)));
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).style.display = 'flex';
       });
     });
-    block.querySelector('#tab-others').style.display = 'none';
+
     const wrapperTablist = document.createElement('div');
     wrapperTablist.classList.add('wrappertablist');
     wrapperTablist.append(block.querySelector('.tabs-list'));
@@ -449,7 +435,7 @@ export default async function decorate(block) {
   }
   // const planslabel = planCode.split(':')[1];
   const planObj = dataCfObj.cfDataObjs.filter((el) => planslabel === el.schcode);
-  if (block.closest('.tabdiv')) {
+  if (block.parentElement.parentElement.classList.contains('tabdiv')) {
     dataMapMoObj.scheme = planObj;
     generateBarChart(planObj[0].sector);
   }
@@ -761,49 +747,6 @@ export default async function decorate(block) {
     divtab.append(tabList);
     block.prepend(divtab);
   }
-
-  const glossary = block.closest('.glossary-tabs');
-  if (glossary) {
-    // const paragraphs = heroBlock.querySelectorAll('p');
-    // dataMapMoObj.CLASS_PREFIXES = ['tab1', 'tab2', 'tab3', 'tab4', 'tab5', 'tab6', 'tab7', 'tab8', 'tab9'];
-    dataMapMoObj.CLASS_PREFIXES = ['tabmain', 'tab-inner', 'tab-subinner', 'tab-child', 'tab-subchild', 'tab-itemmain', 'tab-subitem', 'tab-itemchild', 'tab-iteminner'];
-    dataMapMoObj.addIndexed(block);
-
-    const nextitem = block.closest('.tabs-wrapper').nextElementSibling;
-    dataMapMoObj.CLASS_PREFIXES = ['defitem', 'mainitem', 'inneritem'];
-    dataMapMoObj.addIndexed(nextitem);
-  }
-  // Get all the tab buttons
-  const tabsPreviousStudies1 = document.querySelectorAll('.glossary-tabs .tabs-list .tabs-tab');
-  if (tabsPreviousStudies1) {
-  // Function to handle switching tabs
-    function switchTab(clickedTab) {
-    // 1. Remove 'active' and 'aria-selected' from all tabs
-      Array.from(tabsPreviousStudies1).forEach((tab) => {
-        tab.classList.remove('active');
-        tab.setAttribute('aria-selected', 'false');
-      });
-      // 2. Add 'active' and 'aria-selected' to the one you clicked
-      clickedTab.classList.add('active');
-      clickedTab.setAttribute('aria-selected', 'true');
-    }
-    // --- Set Initial State ---
-    // Find the tab that is already selected in your HTML
-    const initialActiveTab = document.querySelector('.tabs-tab[aria-selected="true"]');
-    if (initialActiveTab) {
-      initialActiveTab.classList.add('active');
-    }
-    // --- Add Click Listeners ---
-    // Add a click event listener to each tab
-    Array.from(tabsPreviousStudies1).forEach((tab) => {
-      tab.addEventListener('click', () => {
-      // When a tab is clicked, run the switchTab function
-        switchTab(tab);
-      });
-    });
-  }
-  // previous studies tab end
-
   document.addEventListener('click', (event) => {
     document.querySelectorAll('.cagr-container').forEach((el) => {
       if (!el.contains(event.target)) {
@@ -835,7 +778,6 @@ export default async function decorate(block) {
       if (Array.from(elchild.classList).includes('tab-glp-container')) {
         elchild.style.display = 'none';
         elchild.classList.add('hide-section');
-        elchild.remove();
       }
     });
   }
@@ -853,9 +795,9 @@ export default async function decorate(block) {
   const tabsPreviousStudies = document.querySelectorAll('.previous-studies-ctn .tabs-list .tabs-tab');
 
   if (tabsPreviousStudies) {
-    // Function to handle switching tabs
+  // Function to handle switching tabs
     const switchTab = (clickedTab) => {
-      // 1. Remove 'active' and 'aria-selected' from all tabs
+    // 1. Remove 'active' and 'aria-selected' from all tabs
       tabsPreviousStudies.forEach((tab) => {
         tab.classList.remove('active');
         tab.setAttribute('aria-selected', 'false');
@@ -877,7 +819,7 @@ export default async function decorate(block) {
     // Add a click event listener to each tab
     tabsPreviousStudies.forEach((tab) => {
       tab.addEventListener('click', () => {
-        // When a tab is clicked, run the switchTab function
+      // When a tab is clicked, run the switchTab function
         switchTab(tab);
       });
     });
@@ -902,190 +844,4 @@ export default async function decorate(block) {
     });
   }
   // previous studies tab end
-  if (block.closest('.previous-studies-tab')) {
-    const mainblk = block.closest('main');
-    const blk = mainblk.querySelectorAll('.prev-studies-wrapper');
-    Array.from(blk).forEach((mainblkelem) => {
-      // dataMapMoObj.CLASS_PREFIXES = ['prev-studies'];
-      // dataMapMoObj.addIndexed(mainblk);
-      const divwrapper = document.createElement('div');
-      Array.from(mainblkelem.children).forEach((elblk, index) => {
-        divwrapper.classList.add('prev-main-wrapper');
-        if (index !== 0) {
-          divwrapper.append(elblk);
-        }
-      });
-      mainblkelem.append(divwrapper);
-    });
-    const panel = block.querySelectorAll('.tabs-panel');
-    Array.from(panel).forEach((inner, index) => {
-      panel.innerHTML = '';
-      inner.append(blk[index]);
-    });
-
-    block.querySelectorAll('.prev-main-wrapper').forEach((eldata) => {
-      const divprev = document.createElement('div');
-      divprev.classList.add('prev-sub');
-      Array.from(eldata.children).forEach((indata, index) => {
-        if (index < (Array.from(eldata.children).length)) {
-          divprev.append(indata);
-        }
-      });
-      eldata.prepend(divprev);
-    });
-
-    // let initSelecTab;
-    const dropdownlist = block.querySelector('.tabs-list');
-    const tabDrodpwon = div(
-      { class: 'tab-dropdown-wrap' },
-      p({ class: 'selected-tab' }),
-      div({ class: 'tab-droplist' }),
-    );
-    tabDrodpwon.querySelector('.tab-droplist').append(dropdownlist);
-    block.prepend(tabDrodpwon);
-
-    const dropdownWrap = mainblk.querySelector('.tab-dropdown-wrap');
-    const dropList = dropdownWrap.querySelector('.tab-droplist');
-    const selectedTab = dropdownWrap.querySelector('.selected-tab');
-    Array.from(dropdownlist.children).forEach((tab) => {
-      if (tab.getAttribute('aria-selected') === 'true') {
-        selectedTab.textContent = tab.textContent;
-      }
-    });
-
-    dropdownWrap.addEventListener('click', (evetn) => {
-      evetn.preventDefault();
-      // console.log('droplist : ', dropList.classList);
-      if (!Array.from(dropList.classList).includes('active')) {
-        dropList.classList.add('active');
-      } else {
-        Array.from(dropdownlist.children).forEach((tab) => {
-          if (tab.getAttribute('aria-selected') === 'true') {
-            selectedTab.textContent = tab.textContent;
-          }
-        });
-        dropList.classList.remove('active');
-      }
-    });
-
-    const prevpage = block.closest('.previous-studies-tab');
-
-    [...prevpage.querySelectorAll('.prev-studies-wrapper .icon-share')].forEach((elemevent) => {
-      const dsp = elemevent.parentElement.nextElementSibling;
-      const prev = elemevent.closest('li').previousElementSibling;
-      if (prev) prev.style.display = 'none';
-
-      if (dsp !== null) {
-        dsp.style.display = 'none';
-        dataMapMoObj.CLASS_PREFIXES = ['listindex'];
-        dataMapMoObj.addIndexed(dsp);
-      }
-
-      const eventvar = elemevent.parentElement;
-
-      // 🔹 Popup Toggle
-      eventvar.addEventListener('click', (e) => {
-        e.stopPropagation();
-
-        const dspblk = elemevent.parentElement.nextElementSibling;
-        if (!dspblk) return;
-
-        const isVisible = dspblk.style.display === 'block';
-
-        // Close all others
-        prevpage.querySelectorAll('.share-popup').forEach((pelem) => { pelem.style.display = 'none'; });
-
-        dspblk.style.display = isVisible ? 'none' : 'block';
-      });
-
-      const dspblk = elemevent.parentElement.nextElementSibling;
-      if (!dspblk) return;
-
-      // Common share data
-      const getShareData = () => {
-        const shareUrl = window.location.href;
-        const card = elemevent.closest('li');
-        const shareText = card?.querySelector('h3')?.innerText || 'Check this out';
-        return { shareUrl, shareText };
-      };
-
-      // 🔹 Facebook Share
-      const facebookBtn = dspblk.querySelector('.listindex1');
-      if (facebookBtn) {
-        facebookBtn.addEventListener('click', (e) => {
-          facebookBtn.querySelector('a').removeAttribute('href');
-          e.stopPropagation();
-          const { shareUrl } = getShareData();
-          const fbLink = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-          window.open(fbLink, '_blank');
-        });
-      }
-
-      // 🔹 WhatsApp Share
-      const whatsappBtn = dspblk.querySelector('.listindex2');
-      if (whatsappBtn) {
-        whatsappBtn.querySelector('a').removeAttribute('href');
-        whatsappBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const { shareUrl, shareText } = getShareData();
-          const wpLink = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
-          window.open(wpLink, '_blank');
-        });
-      }
-
-      // 🔹 X (Twitter) Share
-      const twitterBtn = dspblk.querySelector('.listindex3');
-      if (twitterBtn) {
-        twitterBtn.querySelector('a').removeAttribute('href');
-        twitterBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const { shareUrl, shareText } = getShareData();
-          const twLink = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
-          window.open(twLink, '_blank');
-        });
-      }
-
-      const copyfunc = dspblk.querySelector('.listindex4');
-      if (copyfunc) {
-        copyfunc.querySelector('a').removeAttribute('href');
-        copyfunc.addEventListener('click', (e) => {
-          const urlCopied = dspblk.querySelector('.listindex5');
-          e.stopPropagation();
-          try {
-            const currentUrl = window.location.href;
-            navigator.clipboard.writeText(currentUrl);
-
-            urlCopied.style.display = 'block';
-            setTimeout(() => {
-              urlCopied.style.display = 'none';
-              // breadcrumb.style.display = 'none';
-            }, 1000);
-          } catch (err) {
-            urlCopied.textContent = 'Could not copy URL. Please make sure the window is focused.';
-            urlCopied.style.display = 'block';
-            setTimeout(() => {
-              urlCopied.style.display = 'none';
-            }, 1000);
-          }
-        });
-      }
-    });
-
-    // Click outside → close popup
-    document.addEventListener('click', (event) => {
-      if (!dropList.contains(event.target) && !selectedTab.contains(event.target)) {
-        dropList.classList.remove('active');
-      }
-
-      const clickedShareIcon = event.target.closest('.icon-share');
-      const clickedSharePopup = event.target.closest('.share-popup');
-
-      if (clickedShareIcon || clickedSharePopup || event.target.closest('p')) return;
-
-      prevpage.querySelectorAll('.prev-studies-wrapper .icon-share').forEach((icon) => {
-        const popup = icon.parentElement.nextElementSibling;
-        if (popup) popup.style.display = 'none';
-      });
-    });
-  }
 }

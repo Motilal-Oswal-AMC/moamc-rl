@@ -3,11 +3,9 @@
 @use "../../styles/common-theme/css/fluid-typography"as *;
 
 .section.our-experts-container {
-    // margin-top: 24px;
+    margin-bottom: 0;
 
-    @include media (mobile) {
-        margin-top: 0;
-    }
+    // @include media mobile {}
 
     .our-experts-wrapper {
         ul {
@@ -26,7 +24,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding: 0;
+            padding: 40px 0;
             padding-bottom: 0;
 
             @include media(mobile) {
@@ -34,8 +32,7 @@
                 align-items: flex-start;
                 gap: 40px;
                 padding: 0;
-
-                // padding-top: 24px;
+                padding-top: 24px;
             }
 
             &-cont1 {
@@ -48,7 +45,7 @@
                     h6 {
                         margin: 0;
                         padding: 0;
-                        color: var(--blue-1-800-primary, #2E2A94);
+                        color: var(--blue-1800-primary, #2E2A94);
                         font-feature-settings: var(--font-features-default);
                         font-family: var(--title);
                         font-size: var(--heading-h4-size);
@@ -78,7 +75,6 @@
                     align-items: flex-start;
                     gap: 12px;
                     flex-shrink: 0;
-                    position: relative;
 
                     @include media(mobile) {
                         margin-right: -16px;
@@ -87,7 +83,7 @@
                     .our-expert-sub1 {
                         display: flex;
                         height: 44px;
-                        padding: var(--spacing-10) var(--spacing-8);
+                        padding: 10px 8px;
                         justify-content: flex-start;
                         align-items: center;
                         gap: 8px;
@@ -114,18 +110,12 @@
                             font-style: normal;
                             font-weight: 400;
                             line-height: var(--body-medium-regular-line-height, 20px);
-
-                            ::placeholder {
-                                color: var(--text-body-2);
-                            }
                         }
 
                         .floating-label-wrapper {
                             line-height: 0;
-                            width: 100%;
 
                             label {
-                                display: none;
                                 position: absolute;
                                 top: 12px;
                                 left: 45px;
@@ -167,140 +157,69 @@
                     }
 
                     .our-expert-sub2 {
-                        display: none;
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
 
-                        // display: flex;
-                        // align-items: center;
-                        // gap: 8px;
+                        @include media(mobile) {
+                            max-width: 350px;
+                            width: 100%;
+                            overflow: auto;
+                        }
 
-                        // @include media(mobile) {
-                        //     max-width: 350px;
-                        //     width: 100%;
-                        //     overflow: auto;
-                        // }
+                        .expert-lists1 {
+                            display: flex;
+                            align-items: center;
+                            gap: 4px;
+                            color: var(--neutrals-black);
+                            font-feature-settings: var(--font-features-default);
+                            font-family: var(--body);
+                            font-size: var(--body-small-medium-size);
+                            font-style: normal;
+                            font-weight: 500;
+                            line-height: var(--body-small-medium-line-height);
 
-                        // .expert-lists1 {
-                        //     display: flex;
-                        //     align-items: center;
-                        //     gap: 4px;
-                        //     color: var(--neutrals-black);
-                        //     font-feature-settings: var(--font-features-default);
-                        //     font-family: var(--body);
-                        //     font-size: var(--body-small-medium-size);
-                        //     font-style: normal;
-                        //     font-weight: 500;
-                        //     line-height: var(--body-small-medium-line-height);
+                            .icon {
+                                width: 16px;
+                                height: 16px;
+                                aspect-ratio: 1/1;
+                            }
+                        }
 
-                        //     .icon {
-                        //         width: 16px;
-                        //         height: 16px;
-                        //         aspect-ratio: 1/1;
-                        //     }
-                        // }
+                        li {
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
 
-                        // li {
-                        //     display: flex;
-                        //     align-items: center;
-                        //     gap: 8px;
+                            a {
+                                color: #2E2A94;
+                                font-feature-settings: var(--font-features-default);
+                                font-family: var(--body);
+                                font-size: var(--text-link-xsmall-size);
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: var(--text-link-xsmall-line-height, 16px);
+                                text-decoration-line: underline;
+                                text-decoration-style: solid;
+                                text-decoration-skip-ink: auto;
+                                text-decoration-thickness: auto;
+                                text-underline-offset: 4.9%;
+                                text-underline-position: from-font;
+                                white-space: nowrap;
 
-                        //     a {
-                        //         color: #2E2A94;
-                        //         font-feature-settings: var(--font-features-default);
-                        //         font-family: var(--body);
-                        //         font-size: var(--text-link-xsmall-size);
-                        //         font-style: normal;
-                        //         font-weight: 400;
-                        //         line-height: var(--text-link-xsmall-line-height, 16px);
-                        //         text-decoration-line: underline;
-                        //         text-decoration-style: solid;
-                        //         text-decoration-skip-ink: auto;
-                        //         text-decoration-thickness: auto;
-                        //         text-underline-offset: 4.9%;
-                        //         text-underline-position: from-font;
-                        //         white-space: nowrap;
+                                @include media (mobile) {
+                                    font-size: var(--text-link-small-size);
+                                    line-height: var(--text-link-small-line-height);
+                                }
+                            }
+                        }
 
-                        //         @include media (mobile) {
-                        //             font-size: var(--text-link-small-size);
-                        //             line-height: var(--text-link-small-line-height);
-                        //         }
-                        //     }
-                        // }
-
-                        // .expert-lists2 {
-                        //     padding-right: 8px;
-                        // }
+                        .expert-lists2 {
+                            padding-right: 8px;
+                        }
                     }
 
                     .our-expert-sub3 {
-                        display: none;
-                    }
-
-                    .search-results {
-                        position: absolute;
-                        top: 45px;
-                        display: block;
-                        background-color: var(--neutrals-white);
-                        border: 1px solid var(--neutrals-200);
-                        border-radius: 6px;
-                        width: 96.9%;
-                        margin: 4px 0 0;
-                        height: 220px;
-                        overflow: auto;
-                        z-index: 10;
-                        margin-right: 16px;
-
-                        &::-webkit-scrollbar {
-                            width: 3px;
-                            background-color: #464343;
-                        }
-
-                        &::-webkit-scrollbar-thumb {
-                            width: 3px;
-                            background-color: #424242;
-                            border-radius: 0 1px 1px 0;
-                        }
-
-                        &::-webkit-scrollbar-track {
-                            width: 3px;
-                            background-color: var(--neutrals-white);
-                            border-radius: 0 6px 6px 0;
-                        }
-
-                        .result-item {
-                            margin: unset;
-                            padding: 12px 20px;
-                            cursor: pointer;
-
-                            .list {
-                                font-size: var(--body-small-regular-size);
-                                line-height: var(--label-large-line-height);
-                                color: var(--neutrals-black);
-                                font-family: var(--body);
-                                font-feature-settings: "ss01"on, "ss04"on, "cv01"on, "cv02"on, "cv03"on, "cv04"on, "cv06"on, "cv09"on, "cv10"on, "cv11"on;
-                                font-weight: 400;
-                            }
-
-                            &:last-child {
-                                padding-bottom: unset;
-                            }
-                        }
-
-                        .no-results-message {
-                            font-size: var(--body-small-regular-size);
-                            line-height: var(--label-large-line-height);
-                            color: var(--neutrals-black);
-                            font-family: var(--body);
-                            font-feature-settings: var(--font-features-default);
-                            font-weight: 400;
-                            position: relative;
-                            top: 0;
-                            padding-left: 13px;
-                            border: none;
-                            z-index: 10;
-                        }
-                    }
-
-                    .search-results.dsp-none {
                         display: none;
                     }
                 }
@@ -334,12 +253,6 @@
 }
 
 .section.out-expert-listing.our-experts-container {
-    // margin-bottom: 24px;
-
-    @include media (mobile) {
-        margin-bottom: 32px;
-    }
-
     .our-experts-wrapper {
         .our-experts {
             .our-experts-cont1 {
@@ -355,9 +268,9 @@
                 }
             }
 
-            // .our-experts-cont2 {
-            //     display: none;
-            // }
+            .our-experts-cont2 {
+                display: none;
+            }
         }
     }
 }

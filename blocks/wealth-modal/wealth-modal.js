@@ -2,7 +2,6 @@ import dataMapMoObj from '../../scripts/constant.js';
 import {
   div, ul, li, p, input, label, button, img,
 } from '../../scripts/dom-helpers.js';
-import { myAPI, generateAppId } from '../../scripts/scripts.js';
 
 export default function decorate(block) {
   const wealthModalData = Array.from(block.children);
@@ -112,7 +111,7 @@ export default function decorate(block) {
   arrow.addEventListener('click', toggleDropdown);
 
   assocDrop.querySelectorAll('li').forEach((liarg) => {
-    liarg.addEventListener('click', () => {
+    li.addEventListener('click', () => {
       const touchedFields = new Set();
       assocInput.value = liarg.textContent;
       assocDrop.classList.remove('open');
@@ -189,7 +188,7 @@ export default function decorate(block) {
     };
   }
 
-  async function validateField(inputarg) {
+  function validateField(inputarg) {
     const nameError = wealthModal.querySelector('.name-error');
     const emailError = wealthModal.querySelector('.email-error');
     const phoneError = wealthModal.querySelector('.num-error');
@@ -227,8 +226,8 @@ export default function decorate(block) {
       } else assocError.textContent = '';
     }
 
-    inputarg.classList.toggle('error', !valid && inputarg.value.trim() !== '');
-    toggleErrorIcon(inputarg, valid);
+    inputarg.classList.toggle('error', !valid && input.value.trim() !== '');
+    toggleErrorIcon(input, valid);
     return valid;
   }
   dataMapMoObj.validateField = validateField;
@@ -250,60 +249,11 @@ export default function decorate(block) {
     if (field.value.trim() !== '') label.classList.add('filled');
   });
 
-  submitButton.addEventListener('click', async (e) => {
+  submitButton.addEventListener('click', (e) => {
     e.preventDefault();
     fields.forEach((f) => touchedFields.add(f));
-    if (validateForm()) {
-      // console.log('Form is valid. Submitting...');
-      try {
-        const objreq = {
-          name: nameInput.value.trim(),
-          mobile: phoneInput.value.trim(),
-          email: emailInput.value.trim(),
-          state: 'MH',
-          city: 'M',
-          customField01: 'NULL',
-          customField02: 'NULL',
-          customField03: 'NULL',
-          userIp: '156.67.260.62',
-          type: 'other',
-          code: 'NA',
-        };
-        const headers = {
-          'Content-Type': 'application/json',
-          'X-Encrypted-Key': 'N',
-          appid: generateAppId(),
-        };
-
-        const response = await myAPI(
-          'POST',
-          'https://mf.moamc.com/ums/api/SaveLead/create-leads',
-          objreq,
-          headers,
-        );
-
-        const result = await response.json();
-        // console.log('API Response:', result);
-
-        if (response.ok) {
-          alert('Your details have been submitted successfully!');
-          // Reset form
-          fields.forEach((f) => {
-            f.value = '';
-            const labelvar = f.parentElement.querySelector('.label');
-            if (labelvar) labelvar.classList.remove('filled');
-          });
-          toggleSubmitButton();
-        } else {
-          alert(`Something went wrong: ${result.message || 'Unknown error'}`);
-        }
-      } catch (error) {
-        // console.error('API Error:', error);
-        alert('Failed to submit form. Please try again later.');
-      }
-    } else {
-      toggleSubmitButton();
-    }
+    if (validateForm()) console.log('Form is valid. Submitting...');
+    else toggleSubmitButton();
   });
 
   block.closest('.wealth-register')

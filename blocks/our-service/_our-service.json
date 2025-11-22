@@ -1,0 +1,62 @@
+{
+  "definitions": [
+    {
+      "title": "Our Service",
+      "id": "our-service",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Our Service",
+              "model": "our-service",
+              "filter": "our-service"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Our Service Item",
+      "id": "our-service-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Our Service Item",
+              "model": "our-service-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "our-service-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "richtext",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Fragment URL"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "our-service",
+      "components": [
+        "our-service-item"
+      ]
+    }
+  ]
+}

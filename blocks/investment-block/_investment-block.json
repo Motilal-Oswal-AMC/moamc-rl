@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "title": "Investment Block",
+      "id": "investment-block",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Investment Block",
+              "model": "investment-block"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "investment-block",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Enter Context",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

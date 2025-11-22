@@ -1,0 +1,66 @@
+{
+  "definitions": [
+    {
+      "title": "Pan Valid Block",
+      "id": "pan-valid-block",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Pan Valid Block",
+              "model": "pan-valid-block"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "pan-valid-block",
+      "fields": [
+        {
+          "component": "text",
+          "name": "col_pvpan",
+          "label": "Enter Label For Pan Number Field"
+        },
+        {
+          "component": "richtext",
+          "name": "col_richtext",
+          "value": "",
+          "label": "Enter Context For Resident",
+          "valueType": "string"
+        },
+        {
+          "component": "text",
+          "name": "col_pvname",
+          "label": "Enter Label For Name Field"
+        },
+        {
+          "component": "text",
+          "name": "pol_pvmob",
+          "label": "Enter Label For Mobile Number Field"
+        },
+        {
+          "component": "text",
+          "name": "pol_pvemid",
+          "label": "Enter Label For Email Id Field"
+        },
+        {
+          "component": "text",
+          "name": "pol_pvcity",
+          "label": "Enter Label For City Name Field"
+        },
+        {
+          "component": "richtext",
+          "name": "pol_richtext",
+          "value": "",
+          "label": "Enter Context For TNC and Set Button CTA",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

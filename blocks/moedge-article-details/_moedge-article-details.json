@@ -1,0 +1,41 @@
+{
+  "definitions": [
+    {
+      "title": "MoEdge Article Details",
+      "id": "moedge-article-details",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "MoEdge Article Details",
+              "model": "moedge-article-details"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "moedge-article-details",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "richtext",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "richtext",
+          "name": "Author Name",
+          "value": "",
+          "label": "Author Name And Designation",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

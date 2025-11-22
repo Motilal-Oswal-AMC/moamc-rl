@@ -28,7 +28,6 @@
     // top: 62%;
     bottom: -31px;
     z-index: 15;
-    max-width: max-content;
 
     @include media(tab) {
       right: 16px;
@@ -36,9 +35,7 @@
 
     @include media(mobile) {
       position: fixed;
-
-      // top: 510px;
-      top: 465px;
+      top: 510px;
       bottom: unset;
     }
   }

@@ -36,22 +36,6 @@ $breakpoint-tablet: 900px;
 
       @media (width <=768px) {
         display: block;
-        width: 100%;
-
-        .compaignsub1{
-          width: 100%;
-
-          .compaigninner1{
-            line-height: 0;
-            height: 100%;
-            display: block;
-            width: 100%;
-
-            img{
-              width: 100%;
-            }
-          }
-        }
       }
     }
 
@@ -72,21 +56,10 @@ $breakpoint-tablet: 900px;
         height: 255px;
         object-fit: cover;
 
-        @include media(desktop-sm){
-          height: auto;
-        }
-
-        .compaigninner1{
-          line-height: 0;
+        img{
           height: 100%;
-          display: block;
-
-          img{
-            height: 100%;
-            width: 100%;
-          }
+          width: 100%;
         }
-
       }
     }
 
@@ -95,11 +68,7 @@ $breakpoint-tablet: 900px;
 
 }
 
-.section.fdp-campaign-container.investor-banner.listing-investor-banner{
-  @include media(mobile){
-    margin: -24px 16px 0;
-  }
-}
+
 
 .section.table-wrapper.pws-hero-section.fdp-campaign-container{
     margin: 0;
@@ -342,12 +311,12 @@ $breakpoint-tablet: 900px;
 
 
             @include media(mobile){
-              display: none;
+              display: block;
             }
 
-            // @include media(mobile-md){
-            //   display: none;
-            // }
+            @include media(mobile-md){
+              display: none;
+            }
              
             .compaignsub1{
               font-size: 0;
@@ -365,16 +334,9 @@ $breakpoint-tablet: 900px;
             max-width: 100%;
             font-size: 0;
               
-            @include media(mobile){
-              display: block;
-
-              img.comlist{
-                max-height: 718px;
-                width: 100%;
-              }
-            }
-
             @include media(mobile-md){
+              display: block;
+              
               .mobimg-34{                
                 height: 100%;
                 aspect-ratio: 186/359;
@@ -1074,3 +1036,8 @@ $breakpoint-tablet: 900px;
   }
   
 }
+  
+  
+    
+
+

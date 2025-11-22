@@ -1,57 +1,101 @@
 {
-  "definitions": [
-    {
-      "title": "Section",
-      "id": "section",
-      "plugins": {
-        "xwalk": {
-          "page": {
-            "resourceType": "core/franklin/components/section/v1/section",
-            "template": {
-              "model": "section"
-            }
+  "definitions": [{
+    "title": "Section",
+    "id": "section",
+    "plugins": {
+      "xwalk": {
+        "page": {
+          "resourceType": "core/franklin/components/section/v1/section",
+          "template": {
+            "model": "section"
           }
         }
       }
     }
-  ],
-  "models": [
-    {
-      "id": "section",
-      "fields": [
-        {
-          "component": "text",
-          "name": "name",
-          "label": "Section Name",
-          "description": "The label shown for this section in the Content Tree"
-        },
-        {
-          "component": "multiselect",
-          "name": "style",
-          "label": "Style",
-          "options": [
-            {
-              "name": "Highlight",
-              "value": "highlight"
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "filters": [
-    {
-      "id": "section",
-      "components": [
-        "text",
-        "image",
-        "button",
-        "title",
-        "hero",
-        "cards",
-        "columns",
-        "fragment"
-      ]
-    }
-  ]
+  }],
+  "models": [{
+    "id": "section",
+    "fields": [{
+        "component": "text",
+        "name": "name",
+        "label": "Section Name",
+        "description": "The label shown for this section in the Content Tree"
+      },
+      {
+        "component": "multiselect",
+        "name": "style",
+        "label": "Style",
+        "options": [{
+          "name": "Highlight",
+          "value": "highlight"
+        }]
+      }
+    ]
+  }],
+  "filters": [{
+    "id": "section",
+    "components": [
+      "text",
+      "image",
+      "button",
+      "title",
+      "hero",
+      "cards",
+      "columns",
+      "fragment",
+      "accordion",
+      "embed",
+      "tabs",
+      "calculator-sip",
+      "future-building",
+      "home-banner",
+      "cornerstones-advantage-title",
+      "cornerstones-advantage-cards",
+      "live-streaming",
+      "newsletter-subscription",
+      "think-equity",
+      "fund-card",
+      "investment-block",
+      "growth-now",
+      "broaden-your-research",
+      "make-index-funds",
+      "risk-o-meter",
+      "risk-meter",
+      "fdp-card",
+      "fund-video",
+      "key-facts",
+      "risk-o-meter",
+      "risk-meter",
+      "performance-graph",
+      "our-funds-fdp",
+      "our-funds-block",
+      "co-branding",
+      "pan-valid-block",
+      "invest-now-homepage",
+      "fm-portfolio",
+      "fdp-campaign",
+      "start-building",
+      "our-experts",
+      "popular-article",
+      "moedge-building",
+      "our-authors",
+      "edge-filter",
+      "investing-terms",
+      "global-dashboard",
+      "our-service",
+      "login-page",
+      "login-image-item",
+      "step-up-block",
+      "contact-us-map",
+      "previous-studies-blog",
+      "moedge-article-details",
+      "moedge-article-video",
+      "why-choose-us",
+      "decoding-qglp",
+      "tab-glp",
+      "mo-qglp",
+      "rich-tabs",
+      "wealth-modal"
+    ]
+  }]
 }

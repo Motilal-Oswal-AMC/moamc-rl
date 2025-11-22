@@ -1,0 +1,57 @@
+{
+  "definitions": [
+    {
+      "title": "Login Page",
+      "id": "login-page",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Login Page",
+              "model": "login-page",
+              "filter": "login-page"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Login RT Item",
+      "id": "login-rt-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Login RT Item",
+              "model": "login-rt-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "login-rt-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "login-page",
+      "components": [
+        "login-rt-item"
+      ]
+    }
+  ]
+}

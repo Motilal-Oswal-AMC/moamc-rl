@@ -1,10 +1,5 @@
 import Swiper from '../swiper/swiper-bundle.min.js';
 import dataMapMoObj from '../../scripts/constant.js';
-import {
-  div,
-  label,
-  input,
-} from '../../scripts/dom-helpers.js';
 
 export default function decorate(block) {
   if (window.location.href.includes('author')) {
@@ -34,18 +29,15 @@ export default function decorate(block) {
     const card1 = document.createElement('div');
     card1.classList.add('swiper-slide-cards-1');
 
-    if (!block.closest('.key-investing')) {
-      anchor.textContent = '';
-      anchor.classList.add('button');
-      anchor.appendChild(picture);
-      card1.appendChild(anchor);
-    } else {
-      card1.appendChild(picture);
-    }
+    anchor.textContent = '';
+    anchor.classList.add('button');
+    anchor.appendChild(picture);
+    card1.appendChild(anchor);
 
     const card2 = document.createElement('div');
     card2.classList.add('swiper-slide-cards-2');
     card2.innerHTML = textContent.innerHTML;
+
     dataMapMoObj.CLASS_PREFIXES = [
       'cards-list',
       'cards-list-1-',
@@ -72,12 +64,12 @@ export default function decorate(block) {
   };
 
   const imagesToFix = swiperWrapper.querySelectorAll('img[alt=""]');
-  imagesToFix.forEach((imgelem) => {
-    const { iconName } = imgelem.dataset;
+  imagesToFix.forEach((img) => {
+    const { iconName } = img.dataset;
     const altText = altTextMap[iconName];
 
     if (altText !== undefined) {
-      imgelem.setAttribute('alt', altText);
+      img.setAttribute('alt', altText);
     }
   });
   // =================================================================
@@ -123,85 +115,21 @@ export default function decorate(block) {
   dataMapMoObj.addIndexed(block.closest('.future-building-container'));
   const maindiv = block.closest('.future-building-container');
 
+  maindiv.querySelector('.library-btn3 p').classList.add('libr-btn-p');
+  maindiv.querySelector('.library-btn3 a').classList.add('libr-btn-a');
+
   // 7. Initialize Swiper with navigation if available
-  let config = {};
-  if (!block.closest('.key-investing')) {
-    maindiv.querySelector('.library-btn3 p').classList.add('libr-btn-p');
-    maindiv.querySelector('.library-btn3 a').classList.add('libr-btn-a');
-    config = {
-      slidesPerView: 'auto',
-      spaceBetween: 12,
-      loop: true,
-      navigation, // will be false if no buttons
-      breakpoints: {
-        769: {
-          spaceBetween: 16,
-        },
+  Swiper(block, {
+    slidesPerView: 'auto',
+    spaceBetween: 12,
+    loop: true,
+    navigation, // will be false if no buttons
+    breakpoints: {
+      769: {
+        spaceBetween: 16,
       },
-    };
-    Swiper(block, config);
-  } else {
-    // creating Sear Box for Key Investing
-    const keyInvestSection = block.closest('.section');
-    const keyInvestSearchWrap = keyInvestSection.querySelector('.default-content-wrapper');
-    if (keyInvestSection.classList.contains('key-investing')) {
-      const keyInvestSearch = div(
-        { class: 'keyinvest-search' },
-        input({ class: 'keyinvest-inp', id: 'keyinvest' }),
-        label({ class: 'keyinvest-label', for: 'keyinvest' }, 'Search here'),
-      );
-      keyInvestSearchWrap.append(keyInvestSearch);
-    }
-
-    if (block.closest('main').querySelector('.key-investing')) {
-    // Find the container that has your special classes
-      const mainContainer = block.closest('main')
-        .querySelector('.key-investing .future-building');
-
-      // Only run this pagination logic if we are in the correct block
-      if (mainContainer) {
-        // Select all the card items
-        const items = Array.from(mainContainer.querySelectorAll('.swiper-slide'));
-        const itemsPerPage = items.slice(0, 9).length;
-
-        if (items.length >= itemsPerPage) {
-          dataMapMoObj.setupPagination(mainContainer, items, itemsPerPage);
-        }
-      }
-    }
-  }
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 767) {
-      const futureBuildingSection = document.querySelector('.future-building-container');
-      const stayUpdatedSection = document
-        .querySelector('.article-sub-right.stay-updated.comlist.articlesub2');
-
-      if (futureBuildingSection && stayUpdatedSection) {
-      // Move future-building-container above stay-updated
-        stayUpdatedSection.parentNode.insertBefore(futureBuildingSection, stayUpdatedSection);
-        // console.log('✅ future-building-container moved above stay-updated');
-      } else {
-        // console.warn('⚠️ Required sections not found in DOM');
-      }
-    }
+    },
   });
-
-  // if(window.innerWidth <= 767){
-  // const futureBuildingSection = document.querySelector('.future-building-container');
-  // const stayUpdatedSection = =
-  //  document.querySelector('.article-sub-right.stay-updated.comlist.articlesub2');
-
-  // if (futureBuildingSection && stayUpdatedSection) {
-  // // Move future-building-container above stay-updated
-  // stayUpdatedSection.parentNode.insertBefore(futureBuildingSection, stayUpdatedSection);
-  // console.log('✅ future-building-container moved above stay-updated');
-  // } else {
-  // console.warn('⚠️ Required sections not found in DOM');
-  // }
-  // //
-  // }
-
   return block;
   // let config;
   // if (block.closest('.moedge-article-main')) {

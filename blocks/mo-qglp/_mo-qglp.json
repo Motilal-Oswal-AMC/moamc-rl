@@ -1,0 +1,64 @@
+{
+  "definitions": [
+    {
+      "title": "MO QGLP",
+      "id": "mo-qglp",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "MO QGLP",
+              "model": "mo-qglp",
+              "filter": "mo-qglp"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "MO QGLP Item",
+      "id": "mo-qglp-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "MO QGLP Item",
+              "model": "mo-qglp-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "mo-qglp-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text_link",
+          "value": "",
+          "label": "Text",
+          "valueType": "Links Add Cards"
+        },
+        {
+          "component": "richtext",
+          "name": "text1",
+          "value": "",
+          "label": "Text",
+          "valueType": "Title Name Add"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "mo-qglp",
+      "components": [
+        "mo-qglp-item"
+      ]
+    }
+  ]
+}
