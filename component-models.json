@@ -594,12 +594,12 @@
       },
       {
         "component": "text",
-        "name": "tab-head-title",
+        "name": "tab_head-title",
         "label": "Tab Head Title"
       },
       {
         "component": "text",
-        "name": "tab-title",
+        "name": "tab_title",
         "label": "Tab Title"
       }
     ]
