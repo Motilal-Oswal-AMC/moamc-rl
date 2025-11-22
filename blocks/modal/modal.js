@@ -334,6 +334,7 @@ async function removeClassAfterDelay() {
 export function initializeModalHandlers() {
   document.body.addEventListener('click', async (e) => {
     const link = e.target.closest('a');
+    let title = link?.closest('.card-wrapper')?.querySelector('.card-upper-title .brand-fund-wrap .fund-name-title').textContent;
     if (!link || !link.href) return;
 
     // Check if it's a link to a modal fragment
@@ -375,9 +376,13 @@ export function initializeModalHandlers() {
     removeClassAfterDelay();
     const modal = document.querySelector('.modal');
     if (modal && modal.querySelector('.fm-portfolio-container')) {
-      document.querySelector('.modal').classList.add('modal-journey-fund');
+      const modal = document.querySelector('.modal');
+      modal.classList.add('modal-journey-fund');
+      modal.querySelector('dialog').setAttribute('aria-label',title );
     } else if (!modal.querySelector('.embed')) {
-      document.querySelector('.modal').classList.add('modal-journey');
+      const modal = document.querySelector('.modal');
+      modal.classList.add('modal-journey');
+      modal.querySelector('dialog').setAttribute('aria-label',title );
     }
 
     // Media coverage page - Adding class to modal

@@ -22,7 +22,8 @@ button:focus-visible {
 
 header:focus,
 a:focus {
-    outline: none;
+    /* outline: none; */
+    outline:2px solid black;
 }
 
 /* header:focus-visible,

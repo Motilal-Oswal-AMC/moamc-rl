@@ -14,6 +14,7 @@ export const isDesktop = window.matchMedia('(min-width: 900px)');
  */
 function toggleAllNavSections(sections, expanded = false) {
   sections.querySelectorAll('.nav-sections .default-content-wrapper > ul > li').forEach((section) => {
+    // remove attr from nav onload
     section.setAttribute('aria-expanded', expanded);
   });
 }
@@ -270,6 +271,7 @@ export default async function decorate(block) {
           // 2. Standard open: Close all other menus first, then open the current one.
           // Assuming toggleAllNavSections(navSections, false) closes all menus.
           toggleAllNavSections(navSections, false);
+          // remove attr on hover as well for li
           navSection.setAttribute('aria-expanded', 'true');
 
           // Prevent body scrolling while the menu is open.
@@ -374,6 +376,8 @@ export default async function decorate(block) {
           leaveTimer = setTimeout(() => {
             toggleAllNavSections(navSections, false);
             // Fix: Set aria-expanded to 'false' when the menu is closing.
+
+            // need to check here
             navSection.setAttribute('aria-expanded', 'false');
             document.body.classList.remove('no-scroll');
           }, 300); // A 300ms delay feels smooth and prevents accidental closing.
@@ -726,6 +730,21 @@ export default async function decorate(block) {
   }
 
   const searchtemp = block.querySelector('.nav-tools .nav-tools-sec1 .nav-tools-inner-net1');
+
+  const items = block.querySelectorAll('.nav-tools .nav-tools-sec1');
+  items.forEach((item) => {
+    // get all elements inside this item
+    const imgs = item.querySelectorAll('[data-icon-name]');
+
+    imgs.forEach((img) => {
+      const iconName = img.getAttribute('data-icon-name');
+
+      if (iconName) {
+        img.setAttribute('alt', iconName);
+      }
+    });
+  });
+
   const iconcls = searchtemp !== null ? searchtemp.querySelector('.nav-tools-list-content1') : '';
   const navmain = block.closest('body');
   const navblk = navmain.querySelector('main');

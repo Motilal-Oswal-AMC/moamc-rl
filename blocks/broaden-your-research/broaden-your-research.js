@@ -68,6 +68,7 @@ function createCardElement(cardData, brandName, iconsTemplate) {
     divwrapper.classList.add('risk-home');
     const link = document.createElement('a');
     link.href = '/mutual-fund/in/en/modals/risk-o-meter';
+    link.setAttribute('aria-label',cardData.schDetail.schemeName);
     const svfion = iconsTemplate.querySelector('img');
     svfion.src = `/icons/risk-icon/${iconsvg}`;
     svfion.alt = 'Risk O Meter';
@@ -80,6 +81,7 @@ function createCardElement(cardData, brandName, iconsTemplate) {
     divwrappertwo.classList.add('risk-home-two');
     const linktwo = document.createElement('a');
     linktwo.setAttribute('schemesh', `Direct:${cardData.schcode}`);
+    linktwo.setAttribute('aria-label',cardData.schDetail.schemeName);
     const svfiontwo = iconsTemplate.children[1].querySelector('img');
     linktwo.append(svfiontwo);
     divwrappertwo.append(linktwo);
@@ -194,7 +196,7 @@ export default function decorate(block) {
   block.append(...cardElements);
 
   block.querySelectorAll('.risk-home-two a').forEach((el) => {
-    el.setAttribute('aria-label', 'external-link');
+    // el.setAttribute('aria-label', 'external-link');
     el.addEventListener('click', (event) => {
       const closer = event.target.closest('.risk-home-two');
       const plancode = closer.querySelector('a').getAttribute('schemesh');

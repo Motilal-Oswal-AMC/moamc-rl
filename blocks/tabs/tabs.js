@@ -93,7 +93,7 @@ export default async function decorate(block) {
           }
         }
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).innerHTML = '';
-        dataCf.map((elementfunds) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).append(fundCardblock(elementfunds)));
+        dataCf.map((elementfunds, index) => block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).append(fundCardblock(elementfunds, index)));
         block.querySelector(`#${event.currentTarget.getAttribute('aria-controls')}`).style.display = 'flex';
       });
     });
@@ -105,7 +105,9 @@ export default async function decorate(block) {
       button(
         { class: 'btndesk' },
         a(
-          { href: block.closest('.section').querySelector('.button-container a').getAttribute('href') },
+          {
+            class: 'btndesk', href: block.closest('.section').querySelector('.button-container a').getAttribute('href')
+          },
           block.closest('.section').querySelector('.button-container a').textContent.trim(),
         ),
       ),
@@ -117,6 +119,7 @@ export default async function decorate(block) {
     tabspanel.forEach((el) => {
       block.append(el);
     });
+
     tablist.children[0].click();
   }
   if (block.closest('.known-our-funds')) {

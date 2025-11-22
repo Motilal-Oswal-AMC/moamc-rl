@@ -69,7 +69,7 @@ export default function decorate(block) {
       riskMiterBanch.textContent = `${planobj[0].schDetail.schemeName} Risk- O-Meter`;
       block.querySelector('.corner-1 .column-2').innerHTML = '';
       block.querySelector('.corner-1 .column-2').append(img(
-        { src: `/icons/larg-risk-icon/${planobj[0].risk.benchmarkRisk.split(' ').join('-')}.svg`, alt: 'img' },
+        { src: `/icons/larg-risk-icon/${planobj[0].risk.benchmarkRisk.split(' ').join('-')}.svg`, alt: `${planobj[0].risk.benchmarkRisk.split(' ').join('-')}` },
       ));
     }
     // Scheme Name
@@ -79,7 +79,7 @@ export default function decorate(block) {
       riskMiterScheme.textContent = `${planobj[0].benchmarkreturns[0].groupName} Risk- O-Meter`;
       block.querySelector('.corner-2 .column-2').innerHTML = '';
       block.querySelector('.corner-2 .column-2').append(img(
-        { src: `/icons/larg-risk-icon/${planobj[0].risk.riskType.split(' ').join('-')}.svg`, alt: 'img' },
+        { src: `/icons/larg-risk-icon/${planobj[0].risk.riskType.split(' ').join('-')}.svg`, alt: `${planobj[0].risk.riskType.split(' ').join('-')}` },
       ));
       // block.querySelector('.corner-2 img').src
       // = `../larg-risk-icon/${planobj[0].risk.riskType.split('-').join('-')}.svg`;
@@ -106,7 +106,7 @@ export default function decorate(block) {
       riskMiterBanch.textContent = `${planobj[0].schDetail.schemeName} Risk- O-Meter`;
       block.querySelector('.corner-1 .column-2').innerHTML = '';
       block.querySelector('.corner-1 .column-2').append(img(
-        { src: `/icons/larg-risk-icon/${planobj[0].risk.benchmarkRisk.split(' ').join('-')}.svg`, alt: 'img' },
+        { src: `/icons/larg-risk-icon/${planobj[0].risk.benchmarkRisk.split(' ').join('-')}.svg`, alt: `${planobj[0].risk.benchmarkRisk.split(' ').join('-')}` },
       ));
     }
     // Scheme Name
@@ -116,7 +116,7 @@ export default function decorate(block) {
       riskMiterScheme.textContent = `${planobj[0].benchmarkreturns[0].groupName} Risk- O-Meter`;
       block.querySelector('.corner-2 .column-2').innerHTML = '';
       block.querySelector('.corner-2 .column-2').append(img(
-        { src: `/icons/larg-risk-icon/${planobj[0].risk.riskType.split(' ').join('-')}.svg`, alt: 'img' },
+        { src: `/icons/larg-risk-icon/${planobj[0].risk.riskType.split(' ').join('-')}.svg`, alt: `${planobj[0].risk.riskType.split(' ').join('-')}` },
       ));
       // block.querySelector('.corner-2 img').src
       // = `../larg-risk-icon/${planobj[0].risk.riskType.split('-').join('-')}.svg`;

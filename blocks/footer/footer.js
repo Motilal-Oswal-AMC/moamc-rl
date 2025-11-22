@@ -103,15 +103,17 @@ export default async function decorate(block) {
   summaryList.forEach((summaryEl) => {
     const newH2 = document.createElement('h2');
     newH2.className = summaryEl.className;
-    newH2.innerHTML = summaryEl.innerHTML;
+    // Get only text (remove p tags)
+    newH2.textContent = summaryEl.textContent.trim();
 
     summaryEl.replaceWith(newH2);
   });
 
   const eventv2 = evenFunc.querySelector('.section-content1 .list-items2');
   const eventv3 = eventv2.querySelector('.list-inneritem-1').children;
+  const pathname = '/mutual-fund/in/en/our-funds';
   Array.from(eventv3).forEach((eventElem) => {
-    eventElem.querySelector('a').removeAttribute('href');
+    eventElem.querySelector('a').setAttribute('href',`${window.location.origin}${pathname}`);
     eventElem.addEventListener('click', (event) => {
       const textCurr = event.target.textContent
         .toLowerCase().replaceAll(' funds', '');
@@ -123,7 +125,6 @@ export default async function decorate(block) {
       dataMapMoObj.selectviewFunds = joinstr;
 
       localStorage.setItem('viewmark', dataMapMoObj.selectviewFunds);
-      const pathname = '/mutual-fund/in/en/our-funds';
       window.location.href = `${window.location.origin}${pathname}`;
     });
   });
@@ -173,23 +174,23 @@ export default async function decorate(block) {
 
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont2 .section-content1 img'),
-      'facebook-icon',
+      'facebook',
     );
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont2 .section-content2 img'),
-      'instagram-icon',
+      'instagram',
     );
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont2 .section-content3 img'),
-      'x-icon',
+      'x',
     );
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont2 .section-content4 img'),
-      'youtube-icon',
+      'youtube',
     );
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont2 .section-content5 img'),
-      'lindkin-icon',
+      'lindkin',
     );
     dataMapMoObj.altFunction(
       wrapper.querySelector('.footer-sub-cont3 .section-content1 img'),
@@ -254,25 +255,53 @@ export default async function decorate(block) {
         elemObj.errorelm = closblock;
         if (closblock.querySelector('.errormsg') === null) {
           closblock.querySelector('.field-wrapper').append(span({ class: 'errormsg' }, 'Enter a valid email address'));
+          closblock.querySelector('.field-wrapper').querySelector('.errormsg').setAttribute("role", "alert");
         }
         const inpval = event.target.value;
         const inpelm = event.target.parentElement.classList;
+
+        const getEmailInputElem = event.target;
+
         if (inpval.length < 1) {
           inpelm.remove('email-fail');
           inpelm.remove('email-success');
           closblock.querySelector('.errormsg').style.display = 'none';
           formem.nextElementSibling.style.display = 'none';
+
+          getEmailInputElem.removeAttribute("aria-describedby", "err");
         } else if (emailRegex.test(inpval)) {
           closblock.querySelector('.errormsg').style.display = 'none';
           inpelm.remove('email-fail');
           formem.nextElementSibling.style.display = 'none';
           // inpelm.add('email-success');
-        } else {
-          closblock.querySelector('.errormsg').style.display = 'contents';
-          inpelm.add('email-fail');
-          formem.nextElementSibling.style.display = 'contents';
 
+          getEmailInputElem.removeAttribute("aria-describedby", "err");
+        } else {
+          closblock.querySelector('.errormsg').style.display = 'block';
+          inpelm.add('email-fail');
+          formem.nextElementSibling.style.display = 'block';
           // inpelm.remove('email-success');
+
+          getEmailInputElem.setAttribute("aria-describedby", "err");
+
+
+          // const imgEl = formem.nextElementSibling;
+
+          // // Only run if the next element is actually an <img>
+          // if (imgEl && imgEl.tagName.toLowerCase() === 'img') {
+
+          //   // Create button
+          //   const btn = document.createElement('button');
+          //   btn.type = "button";
+          //   btn.className = "crossbtn";
+          //   btn.style.display = 'contents';
+          //   // Move image inside button
+          //   btn.appendChild(imgEl.cloneNode(true));
+
+          //   // Replace <img> with button
+          //   imgEl.replaceWith(btn);
+          // }
+
         }
       });
       const wrapperimg = document.createElement('div');
@@ -280,7 +309,7 @@ export default async function decorate(block) {
       wrapperimg.append(formem);
       wrapperimg.append(img({
         src: '/icons/error-cross.svg',
-        alt: 'Img',
+        alt: 'Clear',
         class: 'crossimg',
         onclick: () => {
           formem.value = '';

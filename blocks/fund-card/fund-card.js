@@ -7,6 +7,7 @@ import {
   p,
   img,
   a,
+  h3,
 } from '../../scripts/dom-helpers.js';
 import dataMapMoObj from '../../scripts/constant.js';
 import dataCfObj from '../../scripts/dataCfObj.js';
@@ -18,7 +19,7 @@ import {
 function toTitleCase(str) {
   return str.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
 }
-export default function decorate(block) {
+export default function decorate(block, index) {
   let planFlow = 'Direct';
   if (document.querySelector('.fund-toggle-wrap [type="checkbox"]')) {
     planFlow = document.querySelector('.fund-toggle-wrap [type="checkbox"]')
@@ -50,7 +51,6 @@ export default function decorate(block) {
       }
     }
   });
-
   const labelcagr = evaluateByDays(block.dateOfAllotment);
   const classplan = DirectPlanlistArr.length !== 0 && tempReturns.length !== 0 ? '' : ' not-provided';
   const dropdowndot = DirectPlanlistArr.length !== 0 ? '' : 'no-planlist';
@@ -128,7 +128,7 @@ export default function decorate(block) {
             ),
             div(
               { class: 'brand-fund-wrap' },
-              h2(
+              h3(
                 { class: 'fund-name-title' },
                 block.schDetail.schemeName,
               ),
@@ -221,7 +221,7 @@ export default function decorate(block) {
               img({
                 class: 'logoscheme',
                 src: `${mop}`,
-                alt: 'Img',
+                alt: 'brand-logo',
               }),
             ),
             div(
@@ -265,7 +265,7 @@ export default function decorate(block) {
             {
               class: 'brand-fund-wrap',
             },
-            h2(
+            h3(
               { class: 'fund-name-title' },
               block.schDetail.schemeName,
             ),
@@ -453,10 +453,15 @@ export default function decorate(block) {
           ),
         ),
         div(
-          { class: 'button-container' },
+          {
+            class: 'button-container',
+          },
           a(
             {
               class: 'know-more card-btn',
+              'id': `a${index + 1}`,
+              'aria-labelledby': `a${index + 1}`,
+              "href" : getSchemeURL(block.schDetail.schemeName),
               onclick: (event) => {
                 let planFlowsec = 'Direct';
                 if (event.target.closest('.right-container')) {
@@ -490,6 +495,8 @@ export default function decorate(block) {
             {
               href: '/mutual-fund/in/en/modals/invest-now-homepage',
               class: 'invest-now card-btn',
+              'id': `a${index + 1}`,
+              'aria-labelledby': `a${index + 1}`,
             },
             'Invest',
           ),
@@ -499,4 +506,13 @@ export default function decorate(block) {
     return cardContainer;
   }
   return '';
+}
+
+function getSchemeURL(schemeName) {
+  const base = `${window.location.origin}/mutual-fund/in/en/our-funds`;
+
+  if (!schemeName) return `${base}/funds-details-page`;
+
+  const slug = schemeName.toLowerCase().replace(/\s+/g, '-');
+  return `${base}/${slug}`;
 }

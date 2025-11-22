@@ -275,7 +275,7 @@ export default function decorate(block) {
             img({
               class: 'logoscheme',
               src: `${mop}`,
-              alt: 'Img',
+              alt: 'brand-logo',
             }),
           ),
           div(
