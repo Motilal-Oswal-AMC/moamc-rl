@@ -1356,7 +1356,6 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
 
 .qglp-static-component .qglp-static-ext1 .qglp-static-wrp1 {
   display: flex;
-  column-gap: 16px;
        column-gap: 16px;
   margin: 0;
   flex-wrap: wrap;
@@ -1709,7 +1708,6 @@ main > .section.previous-studies-tab.tabs-container .tab-dropdown-wrap .tab-drop
   margin: 0;
   display: flex;
   flex-flow: row wrap;
-  column-gap: 120px;
        column-gap: 120px;
 }
 

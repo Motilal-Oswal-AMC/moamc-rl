@@ -209,11 +209,13 @@
   z-index: 10;
   margin-right: 16px;
 }
-@media (max-width: 768px) {
+
+@media (width <= 768px) {
   .section.our-experts-container .our-experts-wrapper .our-experts-cont2 .our-expert-section1 .search-results {
     width: 95.9%;
   }
 }
+
 .section.our-experts-container .our-experts-wrapper .our-experts-cont2 .our-expert-section1 .search-results::-webkit-scrollbar {
   width: 3px;
   background-color: #464343;
