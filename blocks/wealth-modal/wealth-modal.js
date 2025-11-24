@@ -294,7 +294,7 @@ export default function decorate(block) {
         // console.log('API Response:', result);
 
         if (result) {
-          //alert
+          // alert
           popup(div('Your details have been submitted successfully!'));
           // Reset form
           fields.forEach((f) => {
@@ -306,7 +306,7 @@ export default function decorate(block) {
           toggleSubmitButton();
           block.querySelector('.associated-drop .error-msg').textContent = '';
         } else {
-          //alert
+          // alert
           popup(div(`Something went wrong: ${result.message || 'Unknown error'}`));
         }
       } catch (error) {
