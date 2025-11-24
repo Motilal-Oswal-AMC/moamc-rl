@@ -292,7 +292,9 @@ export default function decorate(block) {
             const labelvar = f.parentElement.querySelector('.label');
             if (labelvar) labelvar.classList.remove('filled');
           });
+          // block.querySelector('.btn-mand .btn').classList.remove('active');
           toggleSubmitButton();
+          block.querySelector('.associated-drop .error-msg').textContent = '';
         } else {
           alert(`Something went wrong: ${result.message || 'Unknown error'}`);
         }
