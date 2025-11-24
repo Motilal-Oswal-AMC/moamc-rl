@@ -242,12 +242,16 @@
                         background-color: var(--neutrals-white);
                         border: 1px solid var(--neutrals-200);
                         border-radius: 6px;
-                        width: 96.9%;
+                        width: 100%;
                         margin: 4px 0 0;
                         height: 220px;
                         overflow: auto;
                         z-index: 10;
                         margin-right: 16px;
+
+                        @include media(mobile) {
+                            width: 95.9%;
+                        }
 
                         &::-webkit-scrollbar {
                             width: 3px;
