@@ -5,7 +5,6 @@ main > .section.our-service-container {
   background-color: var(--neutrals-50);
 }
 @media (max-width: 768px) {
-@media (max-width: 768px) {
   main > .section.our-service-container {
     padding: var(--spacing-40) 16px 32px;
   }
