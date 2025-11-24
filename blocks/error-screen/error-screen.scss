@@ -10,6 +10,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
 
   @include media(mobile) {
     margin: 59px 0 120px 0;
+    padding-top: 120px;
   }
 
   .cards.error-screen-wrap1 {
@@ -110,6 +111,9 @@ main.nfo-nav .section.cards-container.error-screen-container {
               padding: 12px;
               border: unset;
               height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
 
               @include media(mobile) {
                 font-size: var(--button-medium-size);
@@ -124,7 +128,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
 }
 
 // to change the image for error screen
-.error-screen-container#screen-400 {
+.error-screen-container.screen-400 {
   .errscrn-img-cont1 {
     height: 196px;
     width: 145px;
@@ -136,7 +140,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
   }
 }
 
-.error-screen-container#screen-401 {
+.error-screen-container.screen-401 {
   .errscrn-img-cont1 {
     height: 196px;
     width: 112px;
@@ -148,7 +152,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
   }
 }
 
-.error-screen-container#screen-403 {
+.error-screen-container.screen-403 {
   .errscrn-img-cont1 {
     height: 196px;
     width: 121px;
@@ -160,7 +164,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
   }
 }
 
-.error-screen-container#screen-408 {
+.error-screen-container.screen-408 {
   .errscrn-img-cont1 {
     height: 196px;
     width: 132px;
@@ -172,7 +176,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
   }
 }
 
-.error-screen-container#screen-500 {
+.error-screen-container.screen-500 {
   .errscrn-img-cont1 {
     height: 196px;
     width: 156px;
@@ -184,7 +188,7 @@ main.nfo-nav .section.cards-container.error-screen-container {
   }
 }
 
-.error-screen-container#service-screen {
+.error-screen-container.service-screen {
   .cards {
     .cards-card-image {
       height: 196px;
