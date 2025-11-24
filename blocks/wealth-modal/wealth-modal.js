@@ -226,7 +226,6 @@ export default function decorate(block) {
         assocError.textContent = 'Please select an association.';
       } else assocError.textContent = '';
     }
-
     inputarg.classList.toggle('error', !valid && inputarg.value.trim() !== '');
     toggleErrorIcon(inputarg, valid);
     return valid;
