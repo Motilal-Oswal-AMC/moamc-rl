@@ -61,10 +61,11 @@ export default async function decorate(block) {
       if (ourServiceTab !== null) {
         const ourServiceTabList = ourServiceTab.querySelector('.tabs-list');
         if ((Array.from(ourServiceTabList.children).length - 3) > i) {
-          console.log('Hello Dunia');
           ourServiceTab.classList.add('gradient-show');
+          ourServiceTabList.children[i].setAttribute('aria-selected', true);
         } else {
           ourServiceTab.classList.remove('gradient-show');
+          ourServiceTabList.children[i].setAttribute('aria-selected', true);
         }
       }
     });
