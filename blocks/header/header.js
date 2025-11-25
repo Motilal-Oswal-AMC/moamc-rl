@@ -160,6 +160,8 @@ export default async function decorate(block) {
         'navbrand-list-content',
       ];
       dataMapMoObj.addIndexed(navBrand);
+      const sublog = navBrand.querySelector('.navbrand-sec3 .navbrand-sub2 img');
+      dataMapMoObj.altFunction(sublog, 'Annual logo');
     }
 
     // Find and clean up the legacy button wrapper, if it exists.
