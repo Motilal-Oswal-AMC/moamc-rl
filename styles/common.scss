@@ -530,6 +530,7 @@ main>.section.previous-studies-tab.tabs-container {
     }
 
     .selected-tab {
+      position: relative;
       margin: 0;
       color: #2e2a94;
       font-feature-settings: var(--font-features-default);
@@ -539,10 +540,11 @@ main>.section.previous-studies-tab.tabs-container {
       font-weight: 600;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: flex-start;
       border-radius: var(--border-radius-8);
       border: var(--border-width-01) solid var(--strokes-default);
       padding: var(--spacing-8) var(--spacing-12);
+      gap: 15px;
 
       @include media(mobile) {
         height: 40px;
@@ -554,6 +556,19 @@ main>.section.previous-studies-tab.tabs-container {
         width: 24px;
         height: 24px;
         display: block;
+        position: absolute;
+        right: 16px;
+      }
+
+      .selcontent {
+        position: relative;
+
+        sup {
+          position: absolute;
+          top: -6.5px;
+          left: 100%;
+          font-size: 0.75em;
+        }
       }
     }
 
@@ -584,6 +599,21 @@ main>.section.previous-studies-tab.tabs-container {
         display: flex;
         flex-direction: column;
         gap: 0;
+
+        .tabs-tab {
+          position: relative;
+
+          .selcontent {
+            position: relative;
+
+            sup {
+              position: absolute;
+              top: -6.5px;
+              left: 100%;
+              font-size: 0.75em;
+            }
+          }
+        }
       }
     }
   }
@@ -610,6 +640,7 @@ main>.section.previous-studies-tab.tabs-container {
 }
 
 .default-content-wrapper.annual-wealth-wrap1 {
+
   h1,
   h2,
   h3,
@@ -645,6 +676,7 @@ main>.section.previous-studies-tab.tabs-container {
     }
 
     .comlist {
+
       // background-color: red;
       p {
         &.awsubctn-innerchild1 {
@@ -1616,6 +1648,7 @@ main>.section.previous-studies-tab.tabs-container {
       }
 
       >.comlist {
+
         //  padding: 16px;
         .comlist.qglp-static-ls-ul1 {
           margin: 0;
