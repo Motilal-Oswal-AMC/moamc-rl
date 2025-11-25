@@ -233,6 +233,10 @@
     }
 }
 
+.section.edge-filter-container.listing-edge-filter{
+    display: none;
+}
+
 // .moedge-list.edge-filter-container {
 //     @include media(mobile) {
 //         display: none;
