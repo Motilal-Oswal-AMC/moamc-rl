@@ -173,9 +173,11 @@
 }
 .moedge-building > div .moedge-build-sec3 .moedge-build-inner-text4 {
   margin: 0;
+  line-height: 0;
 }
 .moedge-building > div .moedge-build-sec3 .moedge-build-inner-text4 p {
   margin: 0;
+  line-height: 0;
 }
 .moedge-building > div .moedge-build-sec3 .moedge-build-inner-text4 p .moedge-build-list-content1 {
   background-color: transparent;
