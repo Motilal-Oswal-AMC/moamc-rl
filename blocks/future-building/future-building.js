@@ -207,9 +207,7 @@ export default function decorate(block) {
     }
   });
 
-
   //  START SEARCH FUNCTIONALITY
-
 
   const keySearchSection = document.querySelector('.key-investing .keyinvest-search');
   const keySearchNewEle = document.createElement('div');
@@ -263,10 +261,9 @@ export default function decorate(block) {
       });
 
       const uniqueTitleAry = [...new Set(titleAry)];
-      console.log("Titles Array:", uniqueTitleAry);
+      console.log('Titles Array:', uniqueTitleAry);
 
       uniqueTitleAry.forEach((value) => {
-
         const newItem = document.createElement('p');
         newItem.classList.add('result-item');
         newItem.setAttribute('data-original-text', value);
@@ -275,7 +272,7 @@ export default function decorate(block) {
         anchorTag.classList.add('list');
         anchorTag.setAttribute(
           'href',
-          'https://mosl-dev-upd--mosl-eds--motilal-oswal-amc.aem.live/mutual-fund/in/en/motilal-oswal-edge/article-details-list'
+          'https://mosl-dev-upd--mosl-eds--motilal-oswal-amc.aem.live/mutual-fund/in/en/motilal-oswal-edge/article-details-list',
         );
 
         anchorTag.textContent = value;
@@ -284,7 +281,15 @@ export default function decorate(block) {
         keySearchNewEle.appendChild(newItem);
       });
 
-      console.log("Titles Array:", titleAry);
+      console.log('Titles Array:', titleAry);
+    });
+
+    searchFld.addEventListener('focusout', () => {
+      if (searchFld.value.length !== 0) {
+        searchFld.classList.add('active');
+      } else {
+        searchFld.classList.remove('active');
+      }
     });
 
     // 👉 Click Selection
@@ -300,8 +305,6 @@ export default function decorate(block) {
       window.location.href = dataref;
       listContainer.classList.add('dsp-none');
     });
-
-
 
     // 👉 Filter Function
     const filterListItems = (searchTerm) => {
@@ -410,8 +413,6 @@ export default function decorate(block) {
       return event;
     });
 
-
-
     // 👉 Clear Button
     closeBtn.addEventListener('click', () => {
       searchFld.value = '';
@@ -421,9 +422,8 @@ export default function decorate(block) {
 
     // 👉 Keyboard Navigation
     searchFld.addEventListener('keydown', (event) => {
-      const visibleItems = () =>
-        Array.from(listContainer.querySelectorAll('.list'))
-          .filter((item) => item.parentElement.style.display !== 'none');
+      const visibleItems = () => Array.from(listContainer.querySelectorAll('.list'))
+        .filter((item) => item.parentElement.style.display !== 'none');
 
       switch (event.key) {
         case 'ArrowDown':
@@ -434,8 +434,7 @@ export default function decorate(block) {
 
         case 'ArrowUp':
           event.preventDefault();
-          currentFocusIndex =
-            (currentFocusIndex - 1 + visibleItems().length) % visibleItems().length;
+          currentFocusIndex = (currentFocusIndex - 1 + visibleItems().length) % visibleItems().length;
           updateActiveItem(visibleItems());
           break;
 
@@ -459,8 +458,6 @@ export default function decorate(block) {
       if (searchFld.value === '') closeBtn.style.display = 'none';
     }
   });
-
-
 
   // if(window.innerWidth <= 767){
   // const futureBuildingSection = document.querySelector('.future-building-container');
@@ -507,7 +504,4 @@ export default function decorate(block) {
   // }
   // Swiper(block, config);
   // return block;
-
-
-
 }
