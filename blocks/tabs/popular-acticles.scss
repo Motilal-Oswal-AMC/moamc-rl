@@ -358,6 +358,7 @@
 
         &-list {
             display: flex;
+            gap: 8px;
             position: absolute;
             right: 0;
             top: 0;
@@ -374,12 +375,12 @@
 
             @media screen and (width <= 1200px) {
                 position: unset;
-                margin: 0 0 40px;
+                margin: 0 16px 40px;
             }
 
-            @include media(mobile){
-                padding: 0 16px;
-            }
+            // @include media(mobile){
+            //     padding: 0 16px;
+            // }
         }
 
         &-panel {
