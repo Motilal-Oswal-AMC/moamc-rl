@@ -681,6 +681,10 @@
           {
             "name": "Investor Listing Our Expert",
             "value": "listing-our-expert"
+          },
+          {
+            "name": "Fund Investment Options",
+            "value": "fund-investment-options"
           }
         ]
       },
