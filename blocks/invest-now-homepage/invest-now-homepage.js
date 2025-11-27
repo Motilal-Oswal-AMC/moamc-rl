@@ -409,7 +409,7 @@ export async function existingUser(paramblock) {
           }
 
           case 'Enter':
-          // ...existing Enter handling logic...
+            // ...existing Enter handling logic...
             break;
 
           case 'Backspace':
@@ -1338,17 +1338,27 @@ export async function existingUser(paramblock) {
           planslabel = 'LM';
         } else {
           const path = window.location.pathname.split('/').at(-1);
-          const planobj = dataCfObj.cfDataObjs.filter(
-            (el) => path === el.schDetail.schemeName.toLocaleLowerCase().split(' ').join('-'),
-          );
-          planslabel = planobj[0].schcode;
+          let planobj = [];
+          try {
+            const resp = await dataMapMoObj.GetFilter();
+            planobj = Array.isArray(resp)
+              ? resp.filter((el) => path === el.schDetail.schemeName.toLocaleLowerCase().split(' ').join('-'))
+              : [];
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+
+          planslabel = planobj && planobj[0] ? planobj[0].schcode : planslabel;
         }
         // const planslabel = planCodesh.split(':')[1];
         const schemeCode = planslabel;
         const parcloset = closestParam.querySelector('.fdp-card-container');
         const paranearby = parcloset.querySelector('.dropdownmidle .selecttext');
         const planCodenearby = paranearby.getAttribute('dataattr');
-        const dataplan = dataCfObj.cfDataObjs.filter((eldata) => eldata.schcode === schemeCode);
+        dataMapMoObj.GetFilter().then((resp) => {
+          dataplan = resp.filter((eldata) => eldata.schcode === schemeCode);
+
+        }).catch((error) => { console.error('Error fetching data:', error); })
         const amcPlanCode = dataplan[0].moAmcCode;
         const optioncode = dataplan[0].planList
           .filter((elop) => elop.groupedCode === planCodenearby);
@@ -1539,7 +1549,7 @@ function createCustomDropdown(id, labelText, options, defaultValue) {
   );
 }
 
-export default function decorate(block) {
+export default async function decorate(block) {
   const mainclass = block.closest('main');
   const modeltwo = mainclass.querySelector('.modal-stepup-two');
   const modalstepOne = mainclass.querySelector('.modal-stepup-one');
@@ -1905,15 +1915,23 @@ export default function decorate(block) {
   }
   loadCSS('../../scripts/flatpickr.min.css');
   const schcodeFromStorage = localStorage.getItem('schcodeactive');
-  const fundData = dataCfObj.cfDataObjs.find(
-    (fund) => fund.schcode === schcodeFromStorage,
-  );
-  let fundNameFromData;
-  if (fundData) {
-    // console.log('Found Fund Data:', fundData);
-    fundNameFromData = fundData.schDetail.schemeName;
-  } else {
-    // console.error('No fund data found for schcode:', schcodeFromStorage);
+  let fundNameFromData = '';
+  try {
+    const resp = await dataMapMoObj.GetFilter();
+    const fundData = Array.isArray(resp)
+      ? resp.find((fund) => fund.schcode === schcodeFromStorage)
+      : null;
+    if (fundData) {
+      fundNameFromData = fundData.schDetail && fundData.schDetail.schemeName ? fundData.schDetail.schemeName : '';
+      // ensure plan list is set if missing
+      if (!Array.isArray(dataMapMoObj.planlistArr) || dataMapMoObj.planlistArr.length === 0) {
+        dataMapMoObj.planlistArr = fundData.planList || [];
+      }
+    } else {
+      console.warn('No fund data found for schcode:', schcodeFromStorage);
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
   }
 
   // Step up UI
@@ -2137,14 +2155,23 @@ export default function decorate(block) {
 
   // Build modal
   if (dataMapMoObj.planText === undefined || dataMapMoObj.planText === '') {
-    dataCfObj.cfDataObjs.forEach((fund) => {
-      if (fund.schDetail.schemeName === fundNameFromData) {
-        if (dataMapMoObj.planlistArr === undefined || dataMapMoObj.planlistArr.length === 0) {
-          dataMapMoObj.planlistArr = fund.planList;
-        }
-        dataMapMoObj.planText = `${fund.planList[0].planName} | ${fund.planList[0].optionName}`;
+    try {
+      const resp = await dataMapMoObj.GetFilter();
+      if (Array.isArray(resp)) {
+        resp.forEach((fund) => {
+          if (fund.schDetail && fund.schDetail.schemeName === fundNameFromData) {
+            if (!Array.isArray(dataMapMoObj.planlistArr) || dataMapMoObj.planlistArr.length === 0) {
+              dataMapMoObj.planlistArr = fund.planList;
+            }
+            if (fund.planList && fund.planList[0]) {
+              dataMapMoObj.planText = `${fund.planList[0].planName} | ${fund.planList[0].optionName}`;
+            }
+          }
+        });
       }
-    });
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    }
   }
   const textdrop = dataMapMoObj.planText === undefined ? '' : dataMapMoObj.planText;
   const modal = div(

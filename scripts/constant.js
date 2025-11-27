@@ -267,6 +267,7 @@ const dataMapMoObj = {
     mainContainer.appendChild(paginationWrapper);
     goToPage(1);
   },
+  microDelayPromise: () => Promise.resolve(),
   getOrdinalSuperscript: (n) => {
   // Ensure the input is a number
     if (typeof n !== 'number' || Number.isNaN(n)) {

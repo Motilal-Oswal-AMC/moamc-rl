@@ -107,19 +107,6 @@ export default async function decorate(block) {
     }
   });
 
-  if (block.closest('.growth-now-container')) {
-    const phno = block.querySelector('#form-1');
-    phno.setAttribute('maxlength', '10');
-
-    const sanitizeInput = (event) => {
-      const inputValue = event.target.value;
-      const sanitizedValue = inputValue.replace(/[^\d]/g, '');
-      event.target.value = sanitizedValue;
-    };
-    phno.addEventListener('input', sanitizeInput);
-    dataMapMoObj.updateSelectIds('countrySelect', 'countryLabel');
-  }
-
   // Change select id and its label
   function updateSelectIds(newSelectId, newLabelId) {
     const selectEl = block.querySelector('form .countrycode select');
@@ -134,4 +121,16 @@ export default async function decorate(block) {
     selectEl.setAttribute('aria-label', 'Select country code');
   }
   dataMapMoObj.updateSelectIds = updateSelectIds;
+  if (block.closest('.growth-now-container')) {
+    const phno = block.querySelector('#form-1');
+    phno.setAttribute('maxlength', '10');
+
+    const sanitizeInput = (event) => {
+      const inputValue = event.target.value;
+      const sanitizedValue = inputValue.replace(/[^\d]/g, '');
+      event.target.value = sanitizedValue;
+    };
+    phno.addEventListener('input', sanitizeInput);
+    dataMapMoObj.updateSelectIds('countrySelect', 'countryLabel');
+  }
 }

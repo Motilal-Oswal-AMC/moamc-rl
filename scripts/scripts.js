@@ -710,3 +710,11 @@ try {
 }
 
 // Skin the game static end
+
+async function GetFilter() {
+  const resp = await myAPI('GET', 'https://m71vqgw4cj.execute-api.ap-south-1.amazonaws.com/dev/api/public/v1/funds/listing');
+  // const respText = await resp.json();
+  return resp;
+}
+
+dataMapMoObj.GetFilter = GetFilter;
