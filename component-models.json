@@ -175,6 +175,10 @@
             "value": "highlight"
           },
           {
+            "name": "Fund tax",
+            "value": "fund-tax"
+          },
+          {
             "name": "Fund text",
             "value": "fund-text"
           },
