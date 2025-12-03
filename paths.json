@@ -1,5 +1,6 @@
 {
   "mappings": [
+    "/content/motilal-oswal-amc-new/:/",
     "/content/moamc-eds/:/",
     "/content/moamc-eds/configuration:/.helix/config.json",
     "/content/moamc-eds/metadata:/metadata.json",
